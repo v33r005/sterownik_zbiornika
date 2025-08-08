@@ -21,7 +21,8 @@
   if (cfg->getInt32(PARAM8, &Sygnal_Alarmu)) {} else {}
   if (cfg->getInt32(PARAM9, &Min_Wartosc)) {} else {}
   if (cfg->getInt32(PARAM10, &Max_Wartosc)) {} else {}
+  if (cfg->getUInt8(PARAM11, &Zalacz_Analog)) {} else {}
   if (cfg->getUInt8(STANDBY_MODE, &standby_mode)) {} else {}
   if (cfg->getUInt8(STANDBY_MODE1, &standby_mode1)) {} else {}
-  if (cfg->getUInt8(PARAM11, &Zalacz_Analog)) {} else {}
+
 #endif
