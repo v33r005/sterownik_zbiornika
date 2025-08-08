@@ -44,12 +44,13 @@ Supla::EspWebServer suplaServer;
 Supla::Eeprom eeprom;
 
 Supla::ESPWifi wifi;
-Supla::LittleFsConfig configSupla;
+Supla::LittleFsConfig configSupla(2000);
 
 
 Supla::Device::StatusLed statusLed(STATUS_LED_GPIO, true); // inverted state
 Supla::Control::VirtualRelay *uruchom_pompe = nullptr;
 Supla::Control::VirtualRelay *uruchom_zawor = nullptr;
 Supla::Control::VirtualRelay *pomin_zabezpieczenia = nullptr;
+
 
 #endif
