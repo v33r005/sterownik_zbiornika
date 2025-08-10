@@ -33,7 +33,7 @@ void setup() {
   uruchom_zawor = new Supla::Control::VirtualRelay();
   uruchom_zawor->setInitialCaption("Automatyczne dolewanie wody");
   uruchom_zawor->getChannel()->setDefault(SUPLA_CHANNELFNC_POWERSWITCH);
-
+  uruchom_zawor->setDefaultStateRestore();
 
   pomin_zabezpieczenia = new Supla::Control::VirtualRelay();
   pomin_zabezpieczenia->setInitialCaption("Załącz zawór ręcznie");
@@ -54,7 +54,7 @@ void loop() {
 
   static uint32_t lastTime = 0;
   if ((millis() - lastTime > 2000) || (lastTime > millis())) {
-    Aktualny_Poziom = ((analogRead(PIN_ANALOGOWY) - Dolna_Wartosc)*100)/(Gorna_Wartosc - Dolna_Wartosc);
+    Aktualny_Poziom = map(analogRead(PIN_ANALOGOWY), Dolna_Wartosc, Gorna_Wartosc, 0 , 100);
     lastTime = millis(); 
     zbiornik->setValue(Aktualny_Poziom);
   }
