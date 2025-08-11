@@ -19,10 +19,10 @@ const char PARAM12[] = "param8";
 uint32_t Gorna_Wartosc = 4095;
 uint32_t Dolna_Wartosc = 0;
 int32_t Dolewanie = 0;
-int32_t Sygnal_Alarmu = 95;
-int32_t max_zawor = 60;
-int32_t min_zawor = 20;
-int32_t min_pompa = 10;
+uint32_t Sygnal_Alarmu = 95;
+uint32_t max_zawor = 60;
+uint32_t min_zawor = 20;
+uint32_t min_pompa = 10;
 int32_t Min_Analog_Odczyt = 0;
 int32_t Max_Analog_Odczyt = 4095;
 int32_t Min_Wartosc = 0;
@@ -46,3 +46,4 @@ const char RAW_VALUE[] = "raw_value";
 
 
 #endif
+
