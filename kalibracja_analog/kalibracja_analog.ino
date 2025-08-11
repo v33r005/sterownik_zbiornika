@@ -39,6 +39,8 @@ void setup() {
   pomin_zabezpieczenia->setInitialCaption("Załącz zawór ręcznie");
   pomin_zabezpieczenia->getChannel()->setDefault(SUPLA_CHANNELFNC_POWERSWITCH);
 
+  FastLED.addLeds<CHIPSET, diodaPIN, COLOR_ORDER>(leds, 10);
+
   #include "html.h"
   httpUpdater.setup(suplaServer.getServerPtr(), "/update");
   SuplaDevice.setName(devName);
