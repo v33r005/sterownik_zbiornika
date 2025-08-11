@@ -1,7 +1,7 @@
 #ifndef BIBLIOTEKI_H_
 #define BIBLIOTEKI_H
 
-#include <FastLED.h>
+#include <FastLED.h> //https://github.com/FastLED/FastLED    v.3.9.0
 #include <HardwareSerial.h>
 #include <SuplaDevice.h>
 #include <supla/network/esp_wifi.h>
@@ -58,4 +58,5 @@ CRGB leds[NUM_LEDS];
 
 
 #endif
+
 
