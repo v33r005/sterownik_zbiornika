@@ -11,6 +11,9 @@
 #define ZAWOR 13
 #define diodaPIN 11
 #define NUM_LEDS 10
+#define COLOR_ORDER RGB
+#define CHIPSET     WS2815
 
 
 #endif
+
