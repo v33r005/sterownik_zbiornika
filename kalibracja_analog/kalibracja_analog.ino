@@ -56,7 +56,13 @@ void loop() {
   if ((millis() - lastTime > 2000) || (lastTime > millis())) {
     Aktualny_Poziom = map(analogRead(PIN_ANALOGOWY), Dolna_Wartosc, Gorna_Wartosc, 0 , 100);
     lastTime = millis(); 
-    zbiornik->setValue(Aktualny_Poziom);
+    if (Aktualny_Poziom > 100){
+      zbiornik->setValue(100);
+    }else if (Aktualny_Poziom < 0){
+      zbiornik->setValue(0);
+    }else{
+      zbiornik->setValue(Aktualny_Poziom);
+    }
   }
 
   Kalibracja();
