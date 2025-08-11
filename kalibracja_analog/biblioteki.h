@@ -1,6 +1,8 @@
 #ifndef BIBLIOTEKI_H_
 #define BIBLIOTEKI_H
 
+#include <FastLED.h>
+#include <HardwareSerial.h>
 #include <SuplaDevice.h>
 #include <supla/network/esp_wifi.h>
 #include <supla/control/relay.h>
@@ -52,5 +54,8 @@ Supla::Control::VirtualRelay *uruchom_pompe = nullptr;
 Supla::Control::VirtualRelay *uruchom_zawor = nullptr;
 Supla::Control::VirtualRelay *pomin_zabezpieczenia = nullptr;
 
+CRGB leds[NUM_LEDS];
+
 
 #endif
+
