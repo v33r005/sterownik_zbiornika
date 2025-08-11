@@ -10,6 +10,7 @@
 #define POMPA 12
 #define ZAWOR 13
 #define diodaPIN 11
+#define NUM_LEDS 10
 
 
 #endif
