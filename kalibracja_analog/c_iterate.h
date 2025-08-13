@@ -22,7 +22,6 @@ class CustomIterate : public Supla::Element {
       zbiornik->setValue(Aktualny_Poziom);
     }
     Kalibracja();
-    odczyt = digitalRead(ZAWOR);
     if (pominZabezpieczenia->isOn() && Aktualny_Poziom < Sygnal_Alarmu) {
       if (uruchomZawor->isOn()) {
         uruchomZawor->turnOff();
