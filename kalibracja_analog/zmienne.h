@@ -1,5 +1,4 @@
-#ifndef ZMIENNE_H_
-#define ZMIENNE_H_
+#pragma once
 
 const char DEV_NAME[] = "dev_name";
 char devName[30] = {};
@@ -43,7 +42,3 @@ int32_t DEFAULT_NAN_VALUE = -1;
 const char NAN_VALUE[] = "nan_value";
 int32_t nanValue = 100;
 const char RAW_VALUE[] = "raw_value";
-
-
-#endif
-

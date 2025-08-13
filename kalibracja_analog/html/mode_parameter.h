@@ -1,5 +1,4 @@
-#ifndef MODE_PARAMETER_H_
-#define MODE_PARAMETER_H_
+#pragma once
 
 namespace Supla {
 namespace Html {
@@ -94,7 +93,6 @@ class ModeParameter : public Supla::HtmlElement {
       }
       return true;
     }
-
     if (cfg && strcmp(key, PARAM8) == 0) {
       int inFormValue = stringToUInt(value);
       if (inFormValue >= 50 && inFormValue <= 98) {
@@ -103,17 +101,12 @@ class ModeParameter : public Supla::HtmlElement {
       }
       return true;
     }
-      
     return false;    
   }
-  
- protected:
-  
+
+ protected:  
   uint32_t inCfgValue;
+};  // ModeParameter
 
-}; // ModeParameter
-
-}; // namespace Html
-}; // namespace Supla
-
-#endif
+};  // namespace Html
+};  // namespace Supla

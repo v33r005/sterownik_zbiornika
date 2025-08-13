@@ -1,5 +1,4 @@
-#ifndef HTML_CLASSES_H_
-#define HTML_CLASSES_H_
+#pragma once
 
 #include <supla/network/html_element.h>
 #include <supla/network/web_sender.h>
@@ -22,5 +21,3 @@ const char *displayed(bool isDisplayed) {
 #include "html/mode_parameter.h"
 #include "html/mode_parameter_1.h"
 #include "html/analog_sensors_.h"
-
-#endif

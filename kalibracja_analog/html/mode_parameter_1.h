@@ -1,5 +1,4 @@
-#ifndef MODE_PARAMETER_1_H_
-#define MODE_PARAMETER_1_H_
+#pragma once
 
 namespace Supla {
 namespace Html {
@@ -13,7 +12,6 @@ class ModeParameter1 : public Supla::HtmlElement {
     if (cfg) {
       uint32_t value = 0; // default value
       
-
       sender->send("<div class=\"form-field\">");
       sender->sendLabelFor(PARAM6, "Minimalny poziom (wartość analogowa)");
       sender->send(
@@ -25,7 +23,6 @@ class ModeParameter1 : public Supla::HtmlElement {
       sender->send(inCfgValue);
       sender->send("\">");
       sender->send("</div>");
-
 
       sender->send("<div class=\"form-field\">");
       sender->sendLabelFor(PARAM5, "Maksymalny poziom (wartość analogowa)");
@@ -51,7 +48,6 @@ class ModeParameter1 : public Supla::HtmlElement {
       }
       return true;
     }
-    
     if (cfg && strcmp(key, PARAM6) == 0) {
       int inFormValue = stringToUInt(value);
       if (inFormValue >= 0 && inFormValue <= 4095) {
@@ -60,17 +56,12 @@ class ModeParameter1 : public Supla::HtmlElement {
       }
       return true;
     }
-      
     return false;    
   }
   
  protected:
-  
   uint32_t inCfgValue;
+};  // ModeParameter
 
-}; // ModeParameter
-
-}; // namespace Html
-}; // namespace Supla
-
-#endif
+};  // namespace Html
+};  // namespace Supla
