@@ -49,4 +49,4 @@ class CustomIterate : public Supla::Element {
 
 };  //  CustomIterate
 
-CusomIterate cIterate;
+CustomIterate cIterate;
