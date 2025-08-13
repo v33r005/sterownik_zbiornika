@@ -48,3 +48,5 @@ class CustomIterate : public Supla::Element {
   uint32_t lastReadTime_ = 0;
 
 };  //  CustomIterate
+
+CusomIterate cIterate;
