@@ -1,27 +1,27 @@
 #pragma once
 
 void ObslugaPompy() {
-  if (uruchomPompe->isOn() && (Aktualny_Poziom > min_pompa)) {
-    digitalWrite(POMPA, true);
+  if (uruchomPompe->isOn() && (aktualnyPoziom > minPompa)) {
+    pompa->turnOn();
   } else {
-    if (uruchomPompe->isOn() && digitalRead(POMPA == true)) {
-      digitalWrite(POMPA, false);
+    if (uruchomPompe->isOn() && pompa->isOn()) {
       uruchomPompe->turnOff();
-    } else if (uruchomPompe->isOn() == false && digitalRead(POMPA == true)) {
-      digitalWrite(POMPA, false);
+      pompa->turnOff();
+    } else if (!uruchomPompe->isOn() && pompa->isOn()) {
+      pompa->turnOff();
     }
   }
 }
 
 void Kalibracja() {
-   if (standby_mode) {
+   if (standbyMode) {
     Supla::Storage::ConfigInstance()->setUInt32(PARAM6, analogRead(PIN_ANALOGOWY));
     Supla::Storage::ConfigInstance()->setUInt8(STANDBY_MODE, 0);
-    standby_mode = 0;
+    standbyMode = false;
   }
-  if (standby_mode1) {
+  if (standbyMode1) {
     Supla::Storage::ConfigInstance()->setUInt32(PARAM5, analogRead(PIN_ANALOGOWY));
     Supla::Storage::ConfigInstance()->setUInt8(STANDBY_MODE1, 0);
-    standby_mode1 = 0;
+    standbyMode1 = false;
   } 
 }

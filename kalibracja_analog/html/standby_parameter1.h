@@ -1,5 +1,4 @@
-#ifndef STANDBY_PARAMETER_1_H_
-#define STANDBY_PARAMETER_1_H_
+#pragma once
 
 namespace Supla {
 namespace Html {
@@ -38,35 +37,31 @@ class StandByParameter1 : public Supla::HtmlElement {
   bool handleResponse(const char* key, const char* value) {
     auto cfg = Supla::Storage::ConfigInstance();
     if (cfg && strcmp(key, STANDBY_MODE1) == 0) {
-      checkboxFound = true;
+      checkboxFound_ = true;
       uint8_t inCfgValue = 0;  // default value
       cfg->getUInt8(STANDBY_MODE1, &inCfgValue);
       uint8_t inFormValue = (strcmp(value, "on") == 0 ? 1 : 0);
       if (inFormValue != inCfgValue) {
-        standby_mode1 = inFormValue;
+        standbyMode1 = inFormValue;
         cfg->setUInt8(STANDBY_MODE1, inFormValue);
       }
       return true;
     }
-
     return false;
-  };
+  }
   
   void onProcessingEnd() {
-    if (!checkboxFound) {
+    if (!checkboxFound_) {
       handleResponse(STANDBY_MODE1, "off");
     }
-    checkboxFound = false;
+    checkboxFound_ = false;
 
-  };
+  }
 
  protected:
-  bool checkboxFound = false;
-  uint32_t inCfgValue;
+  bool checkboxFound_ = false;
 
 }; // AverageParameter
 
 }; // namespace Html
 }; // namespace Supla
-
-#endif

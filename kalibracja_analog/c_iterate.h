@@ -8,8 +8,8 @@ class CustomIterate : public Supla::Element {
 
     if (millis() - lastReadTime_ > 2000) {
       lastReadTime_ = millis();
-      Aktualny_Poziom = map(analogRead(PIN_ANALOGOWY), 
-                                         Dolna_Wartosc, Gorna_Wartosc, 0 , 100);
+      aktualnyPoziom = map(analogRead(PIN_ANALOGOWY), 
+                                           dolnaWartosc, gornaWartosc, 0 , 100);
       /*
       if (Aktualny_Poziom > 100) {
         zbiornik->setValue(100);
@@ -19,27 +19,27 @@ class CustomIterate : public Supla::Element {
         zbiornik->setValue(Aktualny_Poziom);
       }
       */
-      zbiornik->setValue(Aktualny_Poziom);
+      zbiornik->setValue(aktualnyPoziom);
     }
     Kalibracja();
-    if (pominZabezpieczenia->isOn() && Aktualny_Poziom < Sygnal_Alarmu) {
+    if (pominZabezpieczenia->isOn() && aktualnyPoziom < sygnalAlarmu) {
       if (uruchomZawor->isOn()) {
         uruchomZawor->turnOff();
       }
-      digitalWrite(ZAWOR, true);
-    } else if (pominZabezpieczenia->isOn() && Aktualny_Poziom >= Sygnal_Alarmu) {
-      digitalWrite(ZAWOR, false);
+      zawor->turnOn();
+    } else if (pominZabezpieczenia->isOn() && aktualnyPoziom >= sygnalAlarmu) {
+      zawor->turnOff();
       pominZabezpieczenia->turnOff();
     }
-    if (pominZabezpieczenia->isOn() == false && uruchomZawor->isOn() == false) {
-      if (digitalRead(ZAWOR) == true) {
-        digitalWrite(ZAWOR, false);
+    if (!pominZabezpieczenia->isOn() && !uruchomZawor->isOn()) {
+      if (zawor->isOn()) {
+        zawor->turnOff();
       }
     }
-    if (uruchomZawor->isOn() && Aktualny_Poziom <= min_zawor) {
-      digitalWrite(ZAWOR, true);
-    } else if(uruchomZawor->isOn() && Aktualny_Poziom >= max_zawor) {
-      digitalWrite(ZAWOR, false);
+    if (uruchomZawor->isOn() && aktualnyPoziom <= minZawor) {
+      zawor->turnOn();
+    } else if(uruchomZawor->isOn() && aktualnyPoziom >= maxZawor) {
+      zawor->turnOff();
     }
     ObslugaPompy();
   }

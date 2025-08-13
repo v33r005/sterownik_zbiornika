@@ -11,7 +11,6 @@ class ModeParameter1 : public Supla::HtmlElement {
     auto cfg = Supla::Storage::ConfigInstance();
     if (cfg) {
       uint32_t value = 0; // default value
-      
       sender->send("<div class=\"form-field\">");
       sender->sendLabelFor(PARAM6, "Minimalny poziom (wartość analogowa)");
       sender->send(
@@ -34,17 +33,16 @@ class ModeParameter1 : public Supla::HtmlElement {
       sender->send(inCfgValue);
       sender->send("\">");
       sender->send("</div>");
-      
     }
-      
   }
+
   bool handleResponse(const char* key, const char* value) {
     auto cfg = Supla::Storage::ConfigInstance();
     if (cfg && strcmp(key, PARAM5) == 0) {
       int inFormValue = stringToUInt(value);
       if (inFormValue >= 0 && inFormValue <= 4095) {
         cfg->setUInt32(PARAM5, inFormValue);
-        Gorna_Wartosc = inFormValue;
+        gornaWartosc = inFormValue;
       }
       return true;
     }
@@ -52,7 +50,7 @@ class ModeParameter1 : public Supla::HtmlElement {
       int inFormValue = stringToUInt(value);
       if (inFormValue >= 0 && inFormValue <= 4095) {
         cfg->setUInt32(PARAM6, inFormValue);
-        Dolna_Wartosc = inFormValue;
+        dolnaWartosc = inFormValue;
       }
       return true;
     }
@@ -61,6 +59,7 @@ class ModeParameter1 : public Supla::HtmlElement {
   
  protected:
   uint32_t inCfgValue;
+
 };  // ModeParameter
 
 };  // namespace Html

@@ -15,6 +15,9 @@ Supla::Control::Button *cfgButton = nullptr;
 Supla::Control::VirtualRelay *uruchomPompe = nullptr;
 Supla::Control::VirtualRelay *uruchomZawor = nullptr;
 Supla::Control::VirtualRelay *pominZabezpieczenia = nullptr;
+#include <supla/control/internal_pin_output.h>
+Supla::Control::InternalPinOutput *pompa = nullptr;
+Supla::Control::InternalPinOutput *zawor = nullptr;
 #include <supla/sensor/general_purpose_measurement.h>
 Supla::Sensor::GeneralPurposeMeasurement *gpm = nullptr;
 #include <supla/sensor/container.h>

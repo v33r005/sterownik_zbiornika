@@ -27,8 +27,6 @@ class ReadOnly : public Supla::HtmlElement {
   
   void onProcessingEnd() {}
 
- protected:
-
 }; // ReadOnly
 
 }; // namespace Html

@@ -16,10 +16,9 @@ void setup() {
   Serial.begin(115200);
 
   #include "storage_init.h"
-  pinMode(POMPA, OUTPUT);
-  pinMode(ZAWOR, OUTPUT);
 
-  //new Supla::Clock;
+  pompa = new Supla::Control::InternalPinOutput(POMPA_GPIO);
+  zawor = new Supla::Control::InternalPinOutput(ZAWOR_GPIO);
 
   zbiornik = new Supla::Sensor::Container();
   zbiornik->getChannel()->setDefault(SUPLA_CHANNELFNC_WATER_TANK);

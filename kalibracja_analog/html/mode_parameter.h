@@ -11,8 +11,6 @@ class ModeParameter : public Supla::HtmlElement {
     auto cfg = Supla::Storage::ConfigInstance();
     if (cfg) {
       uint32_t value = 0; // default value
-      
-
       sender->send("<div class=\"form-field\">");
       sender->sendLabelFor(PARAM1, "Poziom maksymalny dolewania w automacie [%]");
       sender->send(
@@ -25,7 +23,6 @@ class ModeParameter : public Supla::HtmlElement {
       sender->send("\">");
       sender->send("</div>");
 
-
       sender->send("<div class=\"form-field\">");
       sender->sendLabelFor(PARAM2, "Poziom automatycznego dolewania [%]");
       sender->send("<input type=\"number\" min=\"10\" max=\"30\" step=\"1\" ");
@@ -36,7 +33,6 @@ class ModeParameter : public Supla::HtmlElement {
       sender->send(inCfgValue);
       sender->send("\">");
       sender->send("</div>");
-
 
       sender->send("<div class=\"form-field\">");
       sender->sendLabelFor(PARAM3, "Minimalny poziom pracy pompy [%]");
@@ -49,7 +45,6 @@ class ModeParameter : public Supla::HtmlElement {
       sender->send("\">");
       sender->send("</div>");
 
-
       sender->send("<div class=\"form-field\">");
       sender->sendLabelFor(PARAM8, "Maksymalny poziom zbiornika do dolewania ręcznego [%]");
       sender->send("<input type=\"number\" min=\"50\" max=\"98\" step=\"1\" ");
@@ -59,29 +54,25 @@ class ModeParameter : public Supla::HtmlElement {
       cfg->getUInt32(PARAM8, &inCfgValue);
       sender->send(inCfgValue);
       sender->send("\">");
-      sender->send("</div>");
-
-
-      
+      sender->send("</div>");      
     }
-      
   }
+
   bool handleResponse(const char* key, const char* value) {
     auto cfg = Supla::Storage::ConfigInstance();
     if (cfg && strcmp(key, PARAM1) == 0) {
       int inFormValue = stringToUInt(value);
       if (inFormValue >= 50 && inFormValue <= 98) {
         cfg->setUInt32(PARAM1, inFormValue);
-        max_zawor = inFormValue;
+        maxZawor = inFormValue;
       }
       return true;
     }
-    
     if (cfg && strcmp(key, PARAM2) == 0) {
       int inFormValue = stringToUInt(value);
       if (inFormValue >= 10 && inFormValue <= 40) {
         cfg->setUInt32(PARAM2, inFormValue);
-        min_zawor = inFormValue;
+        minZawor = inFormValue;
       }
       return true;
     }
@@ -89,7 +80,7 @@ class ModeParameter : public Supla::HtmlElement {
       int inFormValue = stringToUInt(value);
       if (inFormValue >= 0 && inFormValue <= 40) {
         cfg->setUInt32(PARAM3, inFormValue);
-        min_pompa = inFormValue;
+        minPompa = inFormValue;
       }
       return true;
     }
@@ -97,7 +88,7 @@ class ModeParameter : public Supla::HtmlElement {
       int inFormValue = stringToUInt(value);
       if (inFormValue >= 50 && inFormValue <= 98) {
         cfg->setUInt32(PARAM8, inFormValue);
-        Sygnal_Alarmu = inFormValue;
+        sygnalAlarmu = inFormValue;
       }
       return true;
     }
@@ -106,6 +97,7 @@ class ModeParameter : public Supla::HtmlElement {
 
  protected:  
   uint32_t inCfgValue;
+
 };  // ModeParameter
 
 };  // namespace Html

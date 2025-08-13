@@ -6,6 +6,12 @@
 #define ON_ 1
 #define OFF_ 0
 #define PIN_ANALOGOWY 10
-#define POMPA 12
-#define ZAWOR 13
+#define POMPA_GPIO 12
+#define ZAWOR_GPIO 13
+
+#define DEFAULT_IN_MAX 4095
+#define DEFAULT_IN_MIN 0
+#define DEFAULT_OUT_MIN 0
+#define DEFAULT_OUT_MAX 1000000
+#define DEFAULT_NAN_VALUE -1
 
