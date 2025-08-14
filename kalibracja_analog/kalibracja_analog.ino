@@ -11,6 +11,7 @@ czujnik temperatury deszczówki
 #include "html_classes.h"
 #include "funkcje.h"
 #include "c_iterate.h"
+#include "AnalogContainer"
 
 void setup() {
   Serial.begin(115200);
@@ -20,9 +21,7 @@ void setup() {
   pompa = new Supla::Control::InternalPinOutput(POMPA_GPIO);
   zawor = new Supla::Control::InternalPinOutput(ZAWOR_GPIO);
 
-  zbiornik = new Supla::Sensor::Container();
-  zbiornik->getChannel()->setDefault(SUPLA_CHANNELFNC_WATER_TANK);
-  zbiornik->setInternalLevelReporting(true);
+  zbiornik = new Analog_Container_(PIN_ANALOGOWY, Min_Analog_Odczyt, Max_Analog_Odczyt, Min_Wartosc, Max_Wartosc, DEFAULT_NAN_VALUE);
 
   auto cfgButton = new Supla::Control::Button(BUTTON_CFG_GPIO, true, true);
   cfgButton->configureAsConfigButton(&SuplaDevice);
