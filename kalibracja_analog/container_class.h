@@ -11,14 +11,13 @@ class Analog_Container_ : public Supla::Sensor::Container {
   }
 
   void onInit() {
-    channel.setNewValue(double(readNewValue()));
+    channel.setContainerFillValue(readNewValue());
   }
 
   void iterateAlways() override {
     if (millis() - lastReadTime > 2000) {
       lastReadTime = millis();
-      readNewValue();
-      channel.setNewValue(double(readNewValue()));
+      channel.setContainerFillValue(readNewValue());
     }
   }
 
@@ -51,4 +50,5 @@ class Analog_Container_ : public Supla::Sensor::Container {
   uint64_t lastReadTime = 0;
 };
 Analog_Container_ *zbiornik = nullptr;
+
 
