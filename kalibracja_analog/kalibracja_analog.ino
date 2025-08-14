@@ -49,9 +49,9 @@ void setup() {
   uruchomZawor->getChannel()->setDefault(SUPLA_CHANNELFNC_POWERSWITCH);
   uruchomZawor->setDefaultStateRestore();
 
-  pominZabezpieczenia = new Supla::Control::VirtualRelay();
-  pominZabezpieczenia->setInitialCaption("Załącz zawór ręcznie");
-  pominZabezpieczenia->getChannel()->setDefault(SUPLA_CHANNELFNC_POWERSWITCH);
+  zaworReczny = new Supla::Control::VirtualRelay();
+  zaworReczny->setInitialCaption("Załącz zawór ręcznie");
+  zaworReczny->getChannel()->setDefault(SUPLA_CHANNELFNC_POWERSWITCH);
 
   zalaczReczniePompe->addAction(Supla::TOGGLE, uruchomPompe, Supla::ON_PRESS);
   zalaczRecznieZawor->addAction(Supla::TOGGLE, pominZabezpieczenia, Supla::ON_PRESS);
