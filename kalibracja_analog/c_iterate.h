@@ -6,12 +6,12 @@ class CustomIterate : public Supla::Element {
 
   void iterateAlways() {
     Kalibracja();
-    if (pominZabezpieczenia->isOn() && zbiornik->getValue() < sygnalAlarmu) {
+    if (pominZabezpieczenia->isOn() && zbiornik->readNewValue() < sygnalAlarmu) {
       if (uruchomZawor->isOn()) {
         uruchomZawor->turnOff();
       }
       zawor->turnOn();
-    } else if (pominZabezpieczenia->isOn() && zbiornik->getValue() >= sygnalAlarmu) {
+    } else if (pominZabezpieczenia->isOn() && zbiornik->readNewValue() >= sygnalAlarmu) {
       zawor->turnOff();
       pominZabezpieczenia->turnOff();
     }
@@ -20,9 +20,9 @@ class CustomIterate : public Supla::Element {
         zawor->turnOff();
       }
     }
-    if (uruchomZawor->isOn() && zbiornik->getValue() <= minZawor) {
+    if (uruchomZawor->isOn() && zbiornik->readNewValue() <= minZawor) {
       zawor->turnOn();
-    } else if(uruchomZawor->isOn() && zbiornik->getValue() >= maxZawor) {
+    } else if(uruchomZawor->isOn() && zbiornik->readNewValue() >= maxZawor) {
       zawor->turnOff();
     }
     ObslugaPompy();
