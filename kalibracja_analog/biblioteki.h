@@ -2,6 +2,7 @@
 
 #include <HardwareSerial.h>
 #include <SuplaDevice.h>
+#include <supla/control/action_trigger.h>
 #include <supla/device/supla_ca_cert.h>
 #include <supla/network/esp_wifi.h>
 Supla::ESPWifi wifi;
@@ -11,6 +12,8 @@ Supla::Device::StatusLed statusLed(STATUS_LED_GPIO, true); // inverted state
 Supla::LittleFsConfig configSupla(2000);
 #include <supla/control/button.h>
 Supla::Control::Button *cfgButton = nullptr;
+Supla::Control::Button *zalaczReczniePompe = nullptr;
+Supla::Control::Button *zalaczRecznieZawor = nullptr;
 #include <supla/control/virtual_relay.h>
 Supla::Control::VirtualRelay *uruchomPompe = nullptr;
 Supla::Control::VirtualRelay *uruchomZawor = nullptr;
@@ -42,4 +45,5 @@ Supla::Eeprom eeprom;
 #include <supla/network/html/protocol_parameters.h>
 #include <supla/network/html/status_led_parameters.h>
 #include <supla/network/html/wifi_parameters.h>
+
 
