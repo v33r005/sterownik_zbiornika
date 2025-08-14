@@ -1,7 +1,5 @@
 #pragma once
 
-#include <supla/sensor/container.h>
-
 class Analog_Container_ : public Supla::Sensor::Container {
  public: Analog_Container_(int pin, uint32_t in_min = 0,
   uint32_t in_max = 4095, int out_min = 0,
@@ -53,3 +51,4 @@ class Analog_Container_ : public Supla::Sensor::Container {
   uint64_t lastReadTime = 0;
 };
 Analog_Container_ *zbiornik = nullptr;
+
