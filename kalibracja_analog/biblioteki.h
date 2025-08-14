@@ -21,7 +21,6 @@ Supla::Control::InternalPinOutput *zawor = nullptr;
 #include <supla/sensor/general_purpose_measurement.h>
 Supla::Sensor::GeneralPurposeMeasurement *gpm = nullptr;
 #include <supla/sensor/container.h>
-Supla::Sensor::Container *zbiornik = nullptr;
 #include <HTTPUpdateServer.h>
 HTTPUpdateServer httpUpdater;
 #include <supla/network/esp_web_server.h>
@@ -43,3 +42,4 @@ Supla::Eeprom eeprom;
 #include <supla/network/html/protocol_parameters.h>
 #include <supla/network/html/status_led_parameters.h>
 #include <supla/network/html/wifi_parameters.h>
+
