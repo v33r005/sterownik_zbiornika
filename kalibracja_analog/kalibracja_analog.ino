@@ -25,6 +25,9 @@ void setup() {
   zbiornik = new AnalogContainer(
                       ANALOG_GPIO, minAnalogOdczyt, maxAnalogOdczyt,  nanValue);
 
+  czujnikMin = new Supla::Sensor::Binery(SENSOR_MIN_GPIO, true, true);
+  czujnikMax = new Supla::Sensor::Binary(SENSOR_MAX_GPIO, true, true);
+
   auto cfgButton = new Supla::Control::Button(BUTTON_CFG_GPIO, true, true);
   cfgButton->configureAsConfigButton(&SuplaDevice);
 
