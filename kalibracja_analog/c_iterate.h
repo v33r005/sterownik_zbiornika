@@ -11,7 +11,7 @@ class CustomIterate : public Supla::Element {
         uruchomZawor->turnOff();
       }
       zawor->turnOn();
-    } else if (pominZabezpieczenia->isOn() && zbiornik->getValue >= sygnalAlarmu) {
+    } else if (pominZabezpieczenia->isOn() && zbiornik->getValue() >= sygnalAlarmu) {
       zawor->turnOff();
       pominZabezpieczenia->turnOff();
     }
