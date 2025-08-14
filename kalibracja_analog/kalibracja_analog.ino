@@ -10,8 +10,9 @@ czujnik temperatury deszczówki
 #include "zmienne.h"
 #include "html_classes.h"
 #include "funkcje.h"
-#include "c_iterate.h"
 #include "AnalogContainer.h"
+#include "c_iterate.h"
+
 
 void setup() {
   Serial.begin(115200);
@@ -26,6 +27,15 @@ void setup() {
   auto cfgButton = new Supla::Control::Button(BUTTON_CFG_GPIO, true, true);
   cfgButton->configureAsConfigButton(&SuplaDevice);
 
+  zalaczReczniePompe = new Supla::Control::Button(PUMP_BUTTON, true, true);
+  zalaczRecznieZawor = new Supla::Control::Button(VALVE_BUTTON, true, true);
+  zalaczReczniePompe->setMulticlickTime(200);
+  zalaczReczniePompe->setHoldTime(400);
+  zalaczReczniePompe->repeatOnHoldEvery(35);
+  zalaczRecznieZawor->setMulticlickTime(200);
+  zalaczRecznieZawor->setHoldTime(400);
+  zalaczRecznieZawor->repeatOnHoldEvery(35);
+
   uruchomPompe = new Supla::Control::VirtualRelay();
   uruchomPompe->setInitialCaption("Pompa podlewania");
   uruchomPompe->getChannel()->setDefault(SUPLA_CHANNELFNC_POWERSWITCH);
@@ -38,6 +48,9 @@ void setup() {
   pominZabezpieczenia = new Supla::Control::VirtualRelay();
   pominZabezpieczenia->setInitialCaption("Załącz zawór ręcznie");
   pominZabezpieczenia->getChannel()->setDefault(SUPLA_CHANNELFNC_POWERSWITCH);
+
+  zalaczReczniePompe->addAction(Supla::TOGGLE, uruchomPompe, Supla::ON_PRESS);
+  zalaczRecznieZawor->addAction(Supla::TOGGLE, pominZabezpieczenia, Supla::ON_PRESS);
 
   #include "html.h"
 
