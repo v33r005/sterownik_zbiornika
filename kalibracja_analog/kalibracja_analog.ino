@@ -10,7 +10,7 @@ czujnik temperatury deszczówki
 #include "zmienne.h"
 #include "html_classes.h"
 #include "funkcje.h"
-#include "AnalogContainer.h"
+#include "container_class.h"
 #include "c_iterate.h"
 
 
