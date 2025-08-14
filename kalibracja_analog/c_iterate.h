@@ -11,19 +11,24 @@ class CustomIterate : public Supla::Element {
         uruchomZawor->turnOff();
       }
       zawor->turnOn();
+      ledZawor->turnOn();
     } else if (pominZabezpieczenia->isOn() && zbiornik->readNewValue() >= sygnalAlarmu) {
       zawor->turnOff();
+      ledZawor->turnOff();
       pominZabezpieczenia->turnOff();
     }
     if (!pominZabezpieczenia->isOn() && !uruchomZawor->isOn()) {
       if (zawor->isOn()) {
         zawor->turnOff();
+        ledZawor->turnOff();
       }
     }
     if (uruchomZawor->isOn() && zbiornik->readNewValue() <= minZawor) {
       zawor->turnOn();
+      ledZawor->turnOn();
     } else if(uruchomZawor->isOn() && zbiornik->readNewValue() >= maxZawor) {
       zawor->turnOff();
+      ledZawor->turnOn();
     }
     ObslugaPompy();
   }
