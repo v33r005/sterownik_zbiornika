@@ -3,12 +3,15 @@
 void ObslugaPompy() {
   if (uruchomPompe->isOn() && (aktualnyPoziom > minPompa)) {
     pompa->turnOn();
+    ledPompa->turnOn();
   } else {
     if (uruchomPompe->isOn() && pompa->isOn()) {
       uruchomPompe->turnOff();
       pompa->turnOff();
+      ledPompa->turnOff();
     } else if (!uruchomPompe->isOn() && pompa->isOn()) {
       pompa->turnOff();
+      ledPompa->turnOFF();
     }
   }
 }
