@@ -21,6 +21,8 @@ Supla::Control::VirtualRelay *pominZabezpieczenia = nullptr;
 #include <supla/control/internal_pin_output.h>
 Supla::Control::InternalPinOutput *pompa = nullptr;
 Supla::Control::InternalPinOutput *zawor = nullptr;
+Supla::Control::InternalPinOutput *ledPompa = nullptr;
+Supla::Control::InternalPinOutput *ledZawor = nullptr;
 #include <supla/sensor/general_purpose_measurement.h>
 Supla::Sensor::GeneralPurposeMeasurement *gpm = nullptr;
 #include <supla/sensor/container.h>
@@ -51,4 +53,5 @@ AnalogContainer *zbiornik = nullptr;
 #include <supla/network/html/protocol_parameters.h>
 #include <supla/network/html/status_led_parameters.h>
 #include <supla/network/html/wifi_parameters.h>
+
 
