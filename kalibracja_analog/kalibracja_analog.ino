@@ -21,6 +21,8 @@ void setup() {
 
   pompa = new Supla::Control::InternalPinOutput(PUMP_GPIO);
   zawor = new Supla::Control::InternalPinOutput(VALVE_GPIO);
+  ledPompa = new Supla::Control::InternalPinOutput(LED_PUMP_GPIO);
+  ledZawor = new Supla::Control::InternalPinOutput(LED_VALVE_GPIO);
 
   zbiornik = new AnalogContainer(
                       ANALOG_GPIO, minAnalogOdczyt, maxAnalogOdczyt,  nanValue);
