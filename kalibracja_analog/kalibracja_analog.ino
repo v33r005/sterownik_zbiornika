@@ -8,9 +8,9 @@ czujnik temperatury deszczówki
 #include "definicje.h"
 #include "biblioteki.h"
 #include "zmienne.h"
+#include "container_class.h"
 #include "html_classes.h"
 #include "funkcje.h"
-#include "container_class.h"
 #include "c_iterate.h"
 
 
@@ -19,16 +19,17 @@ void setup() {
 
   #include "storage_init.h"
 
-  pompa = new Supla::Control::InternalPinOutput(POMPA_GPIO);
-  zawor = new Supla::Control::InternalPinOutput(ZAWOR_GPIO);
+  pompa = new Supla::Control::InternalPinOutput(PUMP_GPIO);
+  zawor = new Supla::Control::InternalPinOutput(VALVE_GPIO);
 
-  zbiornik = new Analog_Container_(PIN_ANALOGOWY, Min_Analog_Odczyt, Max_Analog_Odczyt, Min_Wartosc, Max_Wartosc, DEFAULT_NAN_VALUE);
+  zbiornik = new AnalogContainer(
+                      ANALOG_GPIO, minAnalogOdczyt, maxAnalogOdczyt,  nanValue);
 
   auto cfgButton = new Supla::Control::Button(BUTTON_CFG_GPIO, true, true);
   cfgButton->configureAsConfigButton(&SuplaDevice);
 
-  zalaczReczniePompe = new Supla::Control::Button(PUMP_BUTTON, true, true);
-  zalaczRecznieZawor = new Supla::Control::Button(VALVE_BUTTON, true, true);
+  zalaczReczniePompe = new Supla::Control::Button(PUMP_BTN_GPIO, true, true);
+  zalaczRecznieZawor = new Supla::Control::Button(VALVE_BTN_GPIO, true, true);
   zalaczReczniePompe->setMulticlickTime(200);
   zalaczReczniePompe->setHoldTime(400);
   zalaczRecznieZawor->setMulticlickTime(200);

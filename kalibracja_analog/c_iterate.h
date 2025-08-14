@@ -27,9 +27,6 @@ class CustomIterate : public Supla::Element {
     }
     ObslugaPompy();
   }
-
- protected:
-
 };  //  CustomIterate
 
 CustomIterate cIterate;

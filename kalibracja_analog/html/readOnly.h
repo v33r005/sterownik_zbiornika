@@ -14,9 +14,9 @@ class ReadOnly : public Supla::HtmlElement {
     sender->send("<input type=\"text\" readonly");
     sender->sendNameAndId("read_only");
     sender->send("placeholder=\"");
-    //if (c_analog != nullptr){
-    sender->send(analogRead(PIN_ANALOGOWY));
-    //} 
+    if (zbiornik != nullptr){
+      sender->send(zbiornik->getRawValue());
+    } 
     sender->send("\">");
     sender->send("</div>");
   }

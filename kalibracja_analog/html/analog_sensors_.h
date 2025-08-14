@@ -113,11 +113,11 @@ class AnalogSensorsParameters : public Supla::HtmlElement {
       sender->send("<input type=\"text\" readonly");
       sender->sendNameAndId(RAW_VALUE);
       sender->send("placeholder=\"");
-      // if (gpm_[i] != nullptr) {
-      sender->send(analogRead(PIN_ANALOGOWY));
-      // } else {
-      //   sender->send("sensor is unavailable");
-      // }
+      if (zbiornik != nullptr) {
+        sender->send(zbiornik->getRawValue());
+      } else {
+        sender->send("sensor is unavailable");
+      }
       sender->send("\">");
       sender->send("</div>");
       // form-field END

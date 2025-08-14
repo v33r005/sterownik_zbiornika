@@ -31,6 +31,9 @@ Supla::EspWebServer suplaServer;
 #include <supla/storage/eeprom.h>
 Supla::Eeprom eeprom;
 
+class AnalogContainer;
+AnalogContainer *zbiornik = nullptr;
+
 #include <supla/network/html/custom_parameter.h>
 #include <supla/network/html/custom_text_parameter.h>
 #include <supla/network/html/custom_checkbox_parameter.h>
@@ -45,5 +48,3 @@ Supla::Eeprom eeprom;
 #include <supla/network/html/protocol_parameters.h>
 #include <supla/network/html/status_led_parameters.h>
 #include <supla/network/html/wifi_parameters.h>
-
-

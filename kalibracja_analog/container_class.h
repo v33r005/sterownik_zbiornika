@@ -1,54 +1,41 @@
 #pragma once
 
-class Analog_Container_ : public Supla::Sensor::Container {
- public: Analog_Container_(int pin, uint32_t in_min = 0,
-  uint32_t in_max = 4095, int out_min = 0,
-                                int out_max = 100, int32_t nanValue = -1)
-    : pin(pin), in_min(in_min), in_max(in_max), out_min(out_min),
-                                  out_max(out_max), nanValue(nanValue){
+#include <supla/sensor/container.h>
+
+class AnalogContainer : public Supla::Sensor::Container {
+ public:
+  AnalogContainer(uint8_t pin, 
+                  uint16_t inMin = 0,
+                  uint16_t inMax = 4095,
+                  int16_t nanValue = -1)
+    : pin_(pin),
+      inMin_(inMin),
+      inMax_(inMax),
+      nanValue_(nanValue) {
+
     setInternalLevelReporting(true);
     getChannel()->setDefault(SUPLA_CHANNELFNC_WATER_TANK);
   }
 
-  void onInit() {
-    channel.setContainerFillValue(readNewValue());
+  uint16_t getRawValue() {
+    return analogRead(pin_);
   }
 
-  void iterateAlways() override {
-    if (millis() - lastReadTime > 2000) {
-      lastReadTime = millis();
-      channel.setContainerFillValue(readNewValue());
-    }
-  }
-
-  double getRawValue() {
-    _rawValue = analogRead(pin);
-    return _rawValue;
-  }
-  
-
-  int readNewValue() override{
-    int _raw = getRawValue();
-    if (_raw < nanValue) {
-      value = NAN;
+  int readNewValue() override {
+    uint16_t raw = getRawValue();
+    if (raw < nanValue_) {
+      value_ = NAN;
     } else {
-      value = map(_raw, in_min, in_max, out_min, out_max);
-      value = (value < 0) ? 0 : value;
+      value_ = map(raw, inMin_, inMax_, 0, 100);
     }
-    return value;
+    return value_;
   }
 
  protected:
-  int pin;
-  int32_t _rawValue = 0;
-  uint32_t in_min = 0;
-  uint32_t in_max = 4095;
-  int32_t nanValue = -1;
-  uint32_t out_min = 0;
-  uint32_t out_max = 100;
-  int value = NAN;
-  uint64_t lastReadTime = 0;
+  uint8_t pin_;
+  uint16_t inMin_ = 0;
+  uint16_t inMax_ = 4095;
+  int16_t nanValue_ = -1;
+  uint8_t value_ = NAN;
+  uint64_t lastReadTime_ = 0;
 };
-Analog_Container_ *zbiornik = nullptr;
-
-
