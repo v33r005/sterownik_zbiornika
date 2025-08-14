@@ -31,10 +31,8 @@ void setup() {
   zalaczRecznieZawor = new Supla::Control::Button(VALVE_BUTTON, true, true);
   zalaczReczniePompe->setMulticlickTime(200);
   zalaczReczniePompe->setHoldTime(400);
-  zalaczReczniePompe->repeatOnHoldEvery(35);
   zalaczRecznieZawor->setMulticlickTime(200);
   zalaczRecznieZawor->setHoldTime(400);
-  zalaczRecznieZawor->repeatOnHoldEvery(35);
 
   uruchomPompe = new Supla::Control::VirtualRelay();
   uruchomPompe->setInitialCaption("Pompa podlewania");
