@@ -21,10 +21,9 @@ Supla::Control::VirtualRelay *zaworReczny = nullptr;
 #include <supla/control/internal_pin_output.h>
 Supla::Control::InternalPinOutput *pompa = nullptr;
 Supla::Control::InternalPinOutput *zawor = nullptr;
-Supla::Control::InternalPinOutput *ledPompa = nullptr;
-Supla::Control::InternalPinOutput *ledZawor = nullptr;
-#include <supla/sensor/general_purpose_measurement.h>
-Supla::Sensor::GeneralPurposeMeasurement *gpm = nullptr;
+#include <supla/control/pin_status_led.h>
+Supla::Control::PinStatusLed *ledPompa = nullptr;
+Supla::Control::PinStatusLed *ledZawor = nullptr;
 #include <supla/sensor/container.h>
 #include <HTTPUpdateServer.h>
 HTTPUpdateServer httpUpdater;

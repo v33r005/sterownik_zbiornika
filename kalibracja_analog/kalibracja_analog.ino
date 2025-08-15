@@ -13,7 +13,6 @@ czujnik temperatury deszczówki
 #include "funkcje.h"
 #include "c_iterate.h"
 
-
 void setup() {
   Serial.begin(115200);
 
@@ -21,8 +20,10 @@ void setup() {
 
   pompa = new Supla::Control::InternalPinOutput(PUMP_GPIO);
   zawor = new Supla::Control::InternalPinOutput(VALVE_GPIO);
-  ledPompa = new Supla::Control::InternalPinOutput(LED_PUMP_GPIO);
-  ledZawor = new Supla::Control::InternalPinOutput(LED_VALVE_GPIO);
+
+  ledPompa = new Supla::Control::PinStatusLed(PUMP_GPIO, LED_PUMP_GPIO);
+  ledZawor = new Supla::Control::PinStatusLed(VALVE_GPIO, LED_VALVE_GPIO);
+
   temperatureSensor = new Supla::Sensor::DS18B20(TEMPERATURE_GPIO);
   temperatureSensor->setInitialCaption("Temperatura deszczówki");
 
@@ -81,5 +82,3 @@ void loop() {
     aktualnyPoziom = zbiornik->readNewValue();
   }
 }
-
-

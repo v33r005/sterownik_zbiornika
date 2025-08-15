@@ -32,7 +32,7 @@ uint8_t standbyMode = OFF;
 const char STANDBY_MODE1[] = "StandByMode1";
 uint8_t standbyMode1 = OFF;
 bool dolej = false;
-bool odczyt =false;
+bool odczyt = false;
 int32_t aktualnyPoziom;
 const char NAN_VALUE[] = "nan_value";
 int32_t nanValue = DEFAULT_NAN_VALUE;

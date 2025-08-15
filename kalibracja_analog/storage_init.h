@@ -22,4 +22,3 @@ cfg->getUInt8(PARAM11, &zalaczAnalog);
 cfg->getUInt8(STANDBY_MODE, &standbyMode);
 cfg->getUInt8(STANDBY_MODE1, &standbyMode1);
 cfg->getInt32(NAN_VALUE, &nanValue);
-
