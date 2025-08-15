@@ -14,9 +14,11 @@ constexpr uint8_t SENSOR_MAX_GPIO = 3;
 constexpr uint8_t SENSOR_MIN_GPIO = 4;
 constexpr uint8_t LED_PUMP_GPIO = 5;
 constexpr uint8_t LED_VALVE_GPIO = 6;
+constexpr uint8_t TEMPERATURE_GPIO = 7;
 
 constexpr uint16_t DEFAULT_IN_MAX  = 4'095;
 constexpr uint16_t DEFAULT_IN_MIN = 0;
 constexpr int32_t DEFAULT_NAN_VALUE = -1;
+
 
 
