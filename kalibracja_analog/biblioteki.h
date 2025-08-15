@@ -34,7 +34,7 @@ Supla::EspWebServer suplaServer;
 Supla::Eeprom eeprom;
 #include <supla/sensor/binary.h>
 Supla::Sensor::Binary *czujnikMax = nullptr;
-Supla::Sensor::Binary *czujnikMIN = nullptr;
+Supla::Sensor::Binary *czujnikMin = nullptr;
 
 class AnalogContainer;
 AnalogContainer *zbiornik = nullptr;
@@ -53,6 +53,7 @@ AnalogContainer *zbiornik = nullptr;
 #include <supla/network/html/protocol_parameters.h>
 #include <supla/network/html/status_led_parameters.h>
 #include <supla/network/html/wifi_parameters.h>
+
 
 
 
