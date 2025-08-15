@@ -1,6 +1,6 @@
 #pragma once
 
-inline constexpr char SOFT_VERSION[] = "5.08.2025 @veeroos";
+inline constexpr char SOFT_VERSION[] = "15.08.2025 @veeroos";
 constexpr uint8_t STATUS_LED_GPIO = 2;
 constexpr uint8_t BUTTON_CFG_GPIO = 0;
 constexpr uint8_t ON = 1;
@@ -19,6 +19,7 @@ constexpr uint8_t TEMPERATURE_GPIO = 7;
 constexpr uint16_t DEFAULT_IN_MAX  = 4'095;
 constexpr uint16_t DEFAULT_IN_MIN = 0;
 constexpr int32_t DEFAULT_NAN_VALUE = -1;
+
 
 
 
