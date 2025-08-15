@@ -20,4 +20,4 @@ const char *displayed(bool isDisplayed) {
 #include "html/standby_parameter1.h"
 #include "html/mode_parameter.h"
 #include "html/mode_parameter_1.h"
-#include "html/analog_sensors_.h"
+//#include "html/analog_sensors_.h"
