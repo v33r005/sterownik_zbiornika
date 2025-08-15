@@ -23,6 +23,8 @@ void setup() {
   zawor = new Supla::Control::InternalPinOutput(VALVE_GPIO);
   ledPompa = new Supla::Control::InternalPinOutput(LED_PUMP_GPIO);
   ledZawor = new Supla::Control::InternalPinOutput(LED_VALVE_GPIO);
+  temperatureSensor = new Supla::Sensor::DS18B20(TEMPERATURE_GPIO);
+  temperatureSensor->setInitialCaption("Temperatura deszczówki");
 
   zbiornik = new AnalogContainer(
                       ANALOG_GPIO, minAnalogOdczyt, maxAnalogOdczyt,  nanValue);
