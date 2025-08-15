@@ -54,7 +54,7 @@ void setup() {
   zaworReczny->getChannel()->setDefault(SUPLA_CHANNELFNC_POWERSWITCH);
 
   zalaczReczniePompe->addAction(Supla::TOGGLE, uruchomPompe, Supla::ON_PRESS);
-  zalaczRecznieZawor->addAction(Supla::TOGGLE, pominZabezpieczenia, Supla::ON_PRESS);
+  zalaczRecznieZawor->addAction(Supla::TOGGLE, zaworReczny, Supla::ON_PRESS);
 
   #include "html.h"
 
