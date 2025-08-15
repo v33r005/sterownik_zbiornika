@@ -11,7 +11,7 @@ void ObslugaPompy() {
       ledPompa->turnOff();
     } else if (!uruchomPompe->isOn() && pompa->isOn()) {
       pompa->turnOff();
-      ledPompa->turnOFF();
+      ledPompa->turnOff();
     }
   }
 }
