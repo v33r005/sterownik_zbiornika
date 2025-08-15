@@ -6,13 +6,13 @@ class CustomIterate : public Supla::Element {
 
   void iterateAlways() {
     Kalibracja();
-    if (zaworReczny->isOn() && zbiornik->readNewValue() < sygnalAlarmu) {
+    if (zaworReczny->isOn() && aktualnyPoziom < sygnalAlarmu) {
       if (uruchomZawor->isOn()) {
         uruchomZawor->turnOff();
       }
       zawor->turnOn();
       ledZawor->turnOn();
-    } else if (zaworReczny->isOn() && zbiornik->readNewValue() >= sygnalAlarmu) {
+    } else if (zaworReczny->isOn() && aktualnyPoziom >= sygnalAlarmu) {
       zawor->turnOff();
       ledZawor->turnOff();
       zaworReczny->turnOff();
@@ -23,10 +23,10 @@ class CustomIterate : public Supla::Element {
         ledZawor->turnOff();
       }
     }
-    if (uruchomZawor->isOn() && zbiornik->readNewValue() <= minZawor) {
+    if (uruchomZawor->isOn() && aktualnyPoziom <= minZawor) {
       zawor->turnOn();
       ledZawor->turnOn();
-    } else if(uruchomZawor->isOn() && zbiornik->readNewValue() >= maxZawor) {
+    } else if(uruchomZawor->isOn() && aktualnyPoziom >= maxZawor) {
       zawor->turnOff();
       ledZawor->turnOn();
     }
