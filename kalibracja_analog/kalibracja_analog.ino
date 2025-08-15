@@ -30,7 +30,11 @@ void setup() {
                       ANALOG_GPIO, minAnalogOdczyt, maxAnalogOdczyt,  nanValue);
 
   czujnikMin = new Supla::Sensor::Binary(SENSOR_MIN_GPIO, true, true);
+  czujnikMin->getChannel()->setDefault(SUPLA_CHANNELFNC_CONTAINER_LEVEL_SENSOR);
+  czujnikMin->setInitialCaption("Czujnik poziomu minimalnego");
   czujnikMax = new Supla::Sensor::Binary(SENSOR_MAX_GPIO, true, true);
+  czujnikMax->getChannel()->setDefault(SUPLA_CHANNELFNC_CONTAINER_LEVEL_SENSOR);
+  czujnikMax->setInitialCaption("Czujnik poziomu maksymalnego");
 
   auto cfgButton = new Supla::Control::Button(BUTTON_CFG_GPIO, true, true);
   cfgButton->configureAsConfigButton(&SuplaDevice);
