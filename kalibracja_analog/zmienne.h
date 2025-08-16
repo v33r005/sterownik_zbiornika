@@ -11,8 +11,6 @@ const char PARAM5[] = "param5";
 const char PARAM6[] = "param6";
 const char PARAM7[] = "param7";
 const char PARAM8[] = "param8";
-const char PARAM9[] = "param8";
-const char PARAM10[] = "param8";
 const char PARAM11[] = "param8";
 const char PARAM12[] = "param8";
 uint32_t gornaWartosc = 4095;
@@ -24,8 +22,6 @@ uint32_t minZawor = 20;
 uint32_t minPompa = 10;
 int32_t minAnalogOdczyt = 0;
 int32_t maxAnalogOdczyt = 4095;
-int32_t minWartosc = 0;
-int32_t maxWartosc = 100;
 uint8_t zalaczAnalog = OFF;
 const char STANDBY_MODE[] = "StandByMode";
 uint8_t standbyMode = OFF;
@@ -37,4 +33,5 @@ int32_t aktualnyPoziom;
 const char NAN_VALUE[] = "nan_value";
 uint32_t nanValue = DEFAULT_NAN_VALUE;
 const char RAW_VALUE[] = "raw_value";
+
 
