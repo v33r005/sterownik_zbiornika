@@ -35,5 +35,6 @@ bool dolej = false;
 bool odczyt = false;
 int32_t aktualnyPoziom;
 const char NAN_VALUE[] = "nan_value";
-int32_t nanValue = DEFAULT_NAN_VALUE;
+uint32_t nanValue = DEFAULT_NAN_VALUE;
 const char RAW_VALUE[] = "raw_value";
+
