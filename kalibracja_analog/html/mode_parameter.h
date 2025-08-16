@@ -54,7 +54,18 @@ class ModeParameter : public Supla::HtmlElement {
       cfg->getUInt32(PARAM8, &inCfgValue);
       sender->send(inCfgValue);
       sender->send("\">");
-      sender->send("</div>");      
+      sender->send("</div>");
+
+      sender->send("<div class=\"form-field\">");
+      sender->sendLabelFor(NAN_VALUE, "Poziom wykrywania awarii czujnika [%]");
+      sender->send("<input type=\"number\" min=\"-1\" max=\"98\" step=\"1\" ");
+      sender->sendNameAndId(NAN_VALUE);
+      sender->send(" value=\"");
+      inCfgValue = -1; // default value
+      cfg->getUInt32(NAN_VALUE, &inCfgValue);
+      sender->send(inCfgValue);
+      sender->send("\">");
+      sender->send("</div>");
     }
   }
 
