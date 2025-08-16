@@ -16,9 +16,8 @@ cfg->getUInt32(PARAM5, &gornaWartosc);
 cfg->getUInt32(PARAM6, &dolnaWartosc);
 cfg->getInt32(PARAM7, &maxAnalogOdczyt);
 cfg->getUInt32(PARAM8, &sygnalAlarmu);
-cfg->getInt32(PARAM9, &minWartosc);
-cfg->getInt32(PARAM10, &maxWartosc);
 cfg->getUInt8(PARAM11, &zalaczAnalog);
 cfg->getUInt8(STANDBY_MODE, &standbyMode);
 cfg->getUInt8(STANDBY_MODE1, &standbyMode1);
 cfg->getUInt32(NAN_VALUE, &nanValue);
+
