@@ -28,7 +28,7 @@ void setup() {
   temperatureSensor->setInitialCaption("Temperatura deszczówki");
 
   zbiornik = new AnalogContainer(
-                      ANALOG_GPIO, minAnalogOdczyt, maxAnalogOdczyt,  nanValue);
+                      ANALOG_GPIO, dolnaWartosc, gornaWartosc,  nanValue);
 
   czujnikMin = new Supla::Sensor::Binary(SENSOR_MIN_GPIO, true, true);
   czujnikMin->getChannel()->setDefault(SUPLA_CHANNELFNC_CONTAINER_LEVEL_SENSOR);
