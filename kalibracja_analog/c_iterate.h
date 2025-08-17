@@ -7,22 +7,22 @@ class CustomIterate : public Supla::Element {
   void iterateAlways() {
     Kalibracja();
     if (zaworReczny->isOn() && aktualnyPoziom < sygnalAlarmu) {
-      if (uruchomZawor->isOn()) {
-        uruchomZawor->turnOff();
+      if (automatZawor->isOn()) {
+        automatZawor->turnOff();
       }
       zawor->turnOn();
     } else if (zaworReczny->isOn() && aktualnyPoziom >= sygnalAlarmu) {
       zawor->turnOff();
       zaworReczny->turnOff();
     }
-    if (!zaworReczny->isOn() && !uruchomZawor->isOn()) {
+    if (!zaworReczny->isOn() && !automatZawor->isOn()) {
       if (zawor->isOn()) {
         zawor->turnOff();
       }
     }
-    if (uruchomZawor->isOn() && aktualnyPoziom <= minZawor) {
+    if (automatZawor->isOn() && aktualnyPoziom <= minZawor) {
       zawor->turnOn();
-    } else if(uruchomZawor->isOn() && aktualnyPoziom >= maxZawor) {
+    } else if(automatZawor->isOn() && aktualnyPoziom >= maxZawor) {
       zawor->turnOff();
     }
     ObslugaPompy();
