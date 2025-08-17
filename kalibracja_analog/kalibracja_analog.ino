@@ -1,9 +1,6 @@
 /*
 to do:
-wejscie na czujnik plywakowy
-przycisk zalaczenia pompy
 wejscie analogowe pomiaru cisnienia
-czujnik temperatury deszczówki
 */
 #include "definicje.h"
 #include "biblioteki.h"
