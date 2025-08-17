@@ -48,10 +48,10 @@ void setup() {
   uruchomPompe->setInitialCaption("Pompa podlewania");
   uruchomPompe->getChannel()->setDefault(SUPLA_CHANNELFNC_POWERSWITCH);
 
-  uruchomZawor = new Supla::Control::VirtualRelay();
-  uruchomZawor->setInitialCaption("Automatyczne dolewanie wody");
-  uruchomZawor->getChannel()->setDefault(SUPLA_CHANNELFNC_POWERSWITCH);
-  uruchomZawor->setDefaultStateRestore();
+  automatZawor = new Supla::Control::VirtualRelay();
+  automatZawor->setInitialCaption("Automatyczne dolewanie wody");
+  automatZawor->getChannel()->setDefault(SUPLA_CHANNELFNC_POWERSWITCH);
+  automatZawor->setDefaultStateRestore();
 
   zaworReczny = new Supla::Control::VirtualRelay();
   zaworReczny->setInitialCaption("Załącz zawór ręcznie");
