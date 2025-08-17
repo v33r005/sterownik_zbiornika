@@ -14,15 +14,15 @@ void ObslugaPompy() {
 }
 
 void Kalibracja() {
-   auto cfg = Supla::Storage::ConfigInstance();
-   if (standbyMode) {
-    cfg->setUInt32(PARAM6, zbiornik->getRawValue());
-    cfg->setUInt8(STANDBY_MODE, 0);
-    standbyMode = false;
+  auto cfg = Supla::Storage::ConfigInstance();
+   if (ustawMinimum) {
+    cfg->setUInt32(DOLNA_WARTOSC, zbiornik->getRawValue());
+    cfg->setUInt8(USTAW_MINIMUM, OFF);
+    ustawMinimum = false;
   }
-  if (standbyMode1) {
-    cfg->setUInt32(PARAM5, zbiornik->getRawValue());
-    cfg->setUInt8(STANDBY_MODE1, 0);
-    standbyMode1 = false;
+  if (ustawMaksimum) {
+    cfg->setUInt32(GORNA_WARTOSC, zbiornik->getRawValue());
+    cfg->setUInt8(USTAW_MAKSIMUM, OFF);
+    ustawMaksimum = false;
   } 
 }

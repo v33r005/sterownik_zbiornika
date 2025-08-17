@@ -6,12 +6,12 @@ class CustomIterate : public Supla::Element {
 
   void iterateAlways() {
     Kalibracja();
-    if (zaworReczny->isOn() && aktualnyPoziom < sygnalAlarmu) {
+    if (zaworReczny->isOn() && aktualnyPoziom < maxPoziom) {
       if (automatZawor->isOn()) {
         automatZawor->turnOff();
       }
       zawor->turnOn();
-    } else if (zaworReczny->isOn() && aktualnyPoziom >= sygnalAlarmu) {
+    } else if (zaworReczny->isOn() && aktualnyPoziom >= maxPoziom) {
       zawor->turnOff();
       zaworReczny->turnOff();
     }
