@@ -11,53 +11,54 @@ class ModeParameter : public Supla::HtmlElement {
     auto cfg = Supla::Storage::ConfigInstance();
     if (cfg) {
       uint32_t value = 0; // default value
-    sender->send("<h2>Kalibracja czujnika poziomu</h2>");
-
-    sender->send("<div class=\"form-field\">");
-    sender->sendLabelFor("read_only", "Odczyt pinu analogowego");
-    sender->send("<input type=\"text\" readonly");
-    sender->sendNameAndId("read_only");
-    sender->send("placeholder=\"");
-    if (zbiornik != nullptr){
-      sender->send(zbiornik->getRawValue());
-    } 
-    sender->send("\">");
-    sender->send("</div>");
+      sender->send("<div class=\"box\">"); //box begin
+      sender->send("<h2>Kalibracja czujnika poziomu</h2>");
 
       sender->send("<div class=\"form-field\">");
-      sender->sendLabelFor(PARAM6, "Minimalny poziom (wartość analogowa)");
+      sender->sendLabelFor("read_only", "Odczyt pinu analogowego");
+      sender->send("<input type=\"text\" readonly");
+      sender->sendNameAndId("read_only");
+      sender->send("placeholder=\"");
+      if (zbiornik != nullptr){
+        sender->send(zbiornik->getRawValue());
+      } 
+      sender->send("\">");
+      sender->send("</div>");
+
+      sender->send("<div class=\"form-field\">");
+      sender->sendLabelFor(DOLNA_WARTOSC, "Minimalny poziom (wartość analogowa)");
       sender->send(
               "<input type=\"number\" min=\"0\" max=\"4095\" step=\"1\" ");
-      sender->sendNameAndId(PARAM6);
+      sender->sendNameAndId(DOLNA_WARTOSC);
       sender->send(" value=\"");
       inCfgValue = 0; // default value
-      cfg->getUInt32(PARAM6, &inCfgValue);
+      cfg->getUInt32(DOLNA_WARTOSC, &inCfgValue);
       sender->send(inCfgValue);
       sender->send("\">");
       sender->send("</div>");
 
       sender->send("<div class=\"form-field\">");
-      sender->sendLabelFor(PARAM5, "Maksymalny poziom (wartość analogowa)");
+      sender->sendLabelFor(GORNA_WARTOSC, "Maksymalny poziom (wartość analogowa)");
       sender->send("<input type=\"number\" min=\"0\" max=\"4095\" step=\"1\" ");
-      sender->sendNameAndId(PARAM5);
+      sender->sendNameAndId(GORNA_WARTOSC);
       sender->send(" value=\"");
       inCfgValue = 4095; // default value
-      cfg->getUInt32(PARAM5, &inCfgValue);
+      cfg->getUInt32(GORNA_WARTOSC, &inCfgValue);
       sender->send(inCfgValue);
       sender->send("\">");
       sender->send("</div>");
 
       uint8_t value1 = 0; // default value
-      cfg->getUInt8(STANDBY_MODE, &value1);
+      cfg->getUInt8(USTAW_MINIMUM, &value1);
       // form-field BEGIN
       sender->send("<div class=\"form-field right-checkbox\">");
-      sender->sendLabelFor(STANDBY_MODE, "Ustaw poziom minimalny");
+      sender->sendLabelFor(USTAW_MINIMUM, "Ustaw poziom minimalny");
       sender->send("<label>");
       sender->send("<span class=\"switch\">");
       sender->send("<input type=\"checkbox\" value=\"on\" ");
-      cfg->getUInt8(STANDBY_MODE, &value1);
+      cfg->getUInt8(USTAW_MINIMUM, &value1);
       sender->send(checked(value1));
-      sender->sendNameAndId(STANDBY_MODE);
+      sender->sendNameAndId(USTAW_MINIMUM);
       sender->send(">");
       sender->send("<span class=\"slider\"></span>");
       sender->send("</span>");
@@ -66,67 +67,67 @@ class ModeParameter : public Supla::HtmlElement {
 
       uint8_t value2 = 0; // default value
 
-      cfg->getUInt8(STANDBY_MODE1, &value2);
+      cfg->getUInt8(USTAW_MAKSIMUM, &value2);
         // form-field BEGIN
       sender->send("<div class=\"form-field right-checkbox\">");
-      sender->sendLabelFor(STANDBY_MODE1, "Ustaw poziom maksymalny");
+      sender->sendLabelFor(USTAW_MAKSIMUM, "Ustaw poziom maksymalny");
       sender->send("<label>");
       sender->send("<span class=\"switch\">");
       sender->send("<input type=\"checkbox\" value=\"on\" ");
-      cfg->getUInt8(STANDBY_MODE1, &value2);
+      cfg->getUInt8(USTAW_MAKSIMUM, &value2);
       sender->send(checked(value));
-      sender->sendNameAndId(STANDBY_MODE1);
+      sender->sendNameAndId(USTAW_MAKSIMUM);
       sender->send(">");
       sender->send("<span class=\"slider\"></span>");
       sender->send("</span>");
       sender->send("</label>");
       sender->send("</div>");
-      sender->send("</div>");
+      sender->send("</div>"); //box emd
       
-      sender->send("<div class=\"box\">");
+      sender->send("<div class=\"box\">"); //box begin
       sender->send("<h2>Ustawienia urządzenia</h2>");
 
       sender->send("<div class=\"form-field\">");
-      sender->sendLabelFor(PARAM1, "Poziom maksymalny dolewania w automacie [%]");
+      sender->sendLabelFor(MAX_ZAWOR, "Poziom maksymalny dolewania w automacie [%]");
       sender->send(
               "<input type=\"number\" min=\"50\" max=\"98\" step=\"1\" ");
-      sender->sendNameAndId(PARAM1);
+      sender->sendNameAndId(MAX_ZAWOR);
       sender->send(" value=\"");
       inCfgValue = 60; // default value
-      cfg->getUInt32(PARAM1, &inCfgValue);
+      cfg->getUInt32(MAX_ZAWOR, &inCfgValue);
       sender->send(inCfgValue);
       sender->send("\">");
       sender->send("</div>");
 
       sender->send("<div class=\"form-field\">");
-      sender->sendLabelFor(PARAM2, "Poziom automatycznego dolewania [%]");
+      sender->sendLabelFor(MIN_ZAWOR, "Poziom automatycznego dolewania [%]");
       sender->send("<input type=\"number\" min=\"10\" max=\"30\" step=\"1\" ");
-      sender->sendNameAndId(PARAM2);
+      sender->sendNameAndId(MIN_ZAWOR);
       sender->send(" value=\"");
       inCfgValue = 20; // default value
-      cfg->getUInt32(PARAM2, &inCfgValue);
+      cfg->getUInt32(MIN_ZAWOR, &inCfgValue);
       sender->send(inCfgValue);
       sender->send("\">");
       sender->send("</div>");
 
       sender->send("<div class=\"form-field\">");
-      sender->sendLabelFor(PARAM3, "Minimalny poziom pracy pompy [%]");
+      sender->sendLabelFor(MIN_POMPA, "Minimalny poziom pracy pompy [%]");
       sender->send("<input type=\"number\" min=\"0\" max=\"40\" step=\"1\" ");
-      sender->sendNameAndId(PARAM3);
+      sender->sendNameAndId(MIN_POMPA);
       sender->send(" value=\"");
       inCfgValue = 10; // default value
-      cfg->getUInt32(PARAM3, &inCfgValue);
+      cfg->getUInt32(MIN_POMPA, &inCfgValue);
       sender->send(inCfgValue);
       sender->send("\">");
       sender->send("</div>");
 
       sender->send("<div class=\"form-field\">");
-      sender->sendLabelFor(PARAM8, "Maksymalny poziom zbiornika do dolewania ręcznego [%]");
+      sender->sendLabelFor(MAX_POZIOM, "Maksymalny poziom zbiornika do dolewania ręcznego [%]");
       sender->send("<input type=\"number\" min=\"50\" max=\"98\" step=\"1\" ");
-      sender->sendNameAndId(PARAM8);
+      sender->sendNameAndId(MAX_POZIOM);
       sender->send(" value=\"");
       inCfgValue = 98; // default value
-      cfg->getUInt32(PARAM8, &inCfgValue);
+      cfg->getUInt32(MAX_POZIOM, &inCfgValue);
       sender->send(inCfgValue);
       sender->send("\">");
       sender->send("</div>"); 
@@ -135,73 +136,73 @@ class ModeParameter : public Supla::HtmlElement {
 
   bool handleResponse(const char* key, const char* value) {
     auto cfg = Supla::Storage::ConfigInstance();
-    if (cfg && strcmp(key, PARAM1) == 0) {
+    if (cfg && strcmp(key, MAX_ZAWOR) == 0) {
       int inFormValue = stringToUInt(value);
       if (inFormValue >= 50 && inFormValue <= 98) {
-        cfg->setUInt32(PARAM1, inFormValue);
+        cfg->setUInt32(MAX_ZAWOR, inFormValue);
         maxZawor = inFormValue;
       }
       return true;
     }
-    if (cfg && strcmp(key, PARAM2) == 0) {
+    if (cfg && strcmp(key, MIN_ZAWOR) == 0) {
       int inFormValue = stringToUInt(value);
       if (inFormValue >= 10 && inFormValue <= 40) {
-        cfg->setUInt32(PARAM2, inFormValue);
+        cfg->setUInt32(MIN_ZAWOR, inFormValue);
         minZawor = inFormValue;
       }
       return true;
     }
-    if (cfg && strcmp(key, PARAM3) == 0) {
+    if (cfg && strcmp(key, MIN_POMPA) == 0) {
       int inFormValue = stringToUInt(value);
       if (inFormValue >= 0 && inFormValue <= 40) {
-        cfg->setUInt32(PARAM3, inFormValue);
+        cfg->setUInt32(MIN_POMPA, inFormValue);
         minPompa = inFormValue;
       }
       return true;
     }
-    if (cfg && strcmp(key, PARAM8) == 0) {
+    if (cfg && strcmp(key, MAX_POZIOM) == 0) {
       int inFormValue = stringToUInt(value);
       if (inFormValue >= 50 && inFormValue <= 98) {
-        cfg->setUInt32(PARAM8, inFormValue);
-        sygnalAlarmu = inFormValue;
+        cfg->setUInt32(MAX_POZIOM, inFormValue);
+        maxPoziom = inFormValue;
       }
       return true;
     }
-    if (cfg && strcmp(key, PARAM5) == 0) {
+    if (cfg && strcmp(key, GORNA_WARTOSC) == 0) {
       int inFormValue = stringToUInt(value);
       if (inFormValue >= 0 && inFormValue <= 4095) {
-        cfg->setUInt32(PARAM5, inFormValue);
+        cfg->setUInt32(GORNA_WARTOSC, inFormValue);
         gornaWartosc = inFormValue;
       }
       return true;
     }
-    if (cfg && strcmp(key, PARAM6) == 0) {
+    if (cfg && strcmp(key, DOLNA_WARTOSC) == 0) {
       int inFormValue = stringToUInt(value);
       if (inFormValue >= 0 && inFormValue <= 4095) {
-        cfg->setUInt32(PARAM6, inFormValue);
+        cfg->setUInt32(DOLNA_WARTOSC, inFormValue);
         dolnaWartosc = inFormValue;
       }
       return true;
     }
-    if (cfg && strcmp(key, STANDBY_MODE) == 0) {
+    if (cfg && strcmp(key, USTAW_MINIMUM) == 0) {
       checkboxFound_ = true;
       uint8_t inCfgValue = 0;  // default value
-      cfg->getUInt8(STANDBY_MODE, &inCfgValue);
+      cfg->getUInt8(USTAW_MINIMUM, &inCfgValue);
       uint8_t inFormValue = (strcmp(value, "on") == 0 ? 1 : 0);
       if (inFormValue != inCfgValue) {
-        standbyMode = inFormValue;
-        cfg->setUInt8(STANDBY_MODE, inFormValue);
+        ustawMinimum = inFormValue;
+        cfg->setUInt8(USTAW_MINIMUM, inFormValue);
       }
       return true;
     }
-    if (cfg && strcmp(key, STANDBY_MODE1) == 0) {
+    if (cfg && strcmp(key, USTAW_MAKSIMUM) == 0) {
       checkboxFound_1 = true;
       uint8_t inCfgValue = 0;  // default value
-      cfg->getUInt8(STANDBY_MODE1, &inCfgValue);
+      cfg->getUInt8(USTAW_MAKSIMUM, &inCfgValue);
       uint8_t inFormValue = (strcmp(value, "on") == 0 ? 1 : 0);
       if (inFormValue != inCfgValue) {
-        standbyMode1 = inFormValue;
-        cfg->setUInt8(STANDBY_MODE1, inFormValue);
+        ustawMaksimum = inFormValue;
+        cfg->setUInt8(USTAW_MAKSIMUM, inFormValue);
       }
       return true;
     }
@@ -209,11 +210,11 @@ class ModeParameter : public Supla::HtmlElement {
   }
   void onProcessingEnd() {
     if (!checkboxFound_) {
-      handleResponse(STANDBY_MODE, "off");
+      handleResponse(USTAW_MINIMUM, "off");
     }
     checkboxFound_ = false;
     if (!checkboxFound_1) {
-      handleResponse(STANDBY_MODE1, "off");
+      handleResponse(USTAW_MAKSIMUM, "off");
     }
     checkboxFound_1 = false;
   }
