@@ -15,8 +15,4 @@ const char *displayed(bool isDisplayed) {
 }
 
 #include "html/przycisk_update.h"
-#include "html/readonly.h"
-#include "html/standby_parameter.h"
-#include "html/standby_parameter1.h"
 #include "html/mode_parameter.h"
-#include "html/mode_parameter_1.h"
