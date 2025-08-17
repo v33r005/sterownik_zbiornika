@@ -16,7 +16,7 @@ Supla::Control::Button *zalaczReczniePompe = nullptr;
 Supla::Control::Button *zalaczRecznieZawor = nullptr;
 #include <supla/control/virtual_relay.h>
 Supla::Control::VirtualRelay *uruchomPompe = nullptr;
-Supla::Control::VirtualRelay *uruchomZawor = nullptr;
+Supla::Control::VirtualRelay *automatZawor = nullptr;
 Supla::Control::VirtualRelay *zaworReczny = nullptr;
 #include <supla/control/internal_pin_output.h>
 Supla::Control::InternalPinOutput *pompa = nullptr;
@@ -54,3 +54,4 @@ AnalogContainer *zbiornik = nullptr;
 #include <supla/network/html/protocol_parameters.h>
 #include <supla/network/html/status_led_parameters.h>
 #include <supla/network/html/wifi_parameters.h>
+
