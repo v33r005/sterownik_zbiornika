@@ -17,22 +17,26 @@ void setup() {
 
   pompa = new Supla::Control::InternalPinOutput(PUMP_GPIO);
   zawor = new Supla::Control::InternalPinOutput(VALVE_GPIO);
-
   ledPompa = new Supla::Control::PinStatusLed(PUMP_GPIO, LED_PUMP_GPIO);
   ledZawor = new Supla::Control::PinStatusLed(VALVE_GPIO, LED_VALVE_GPIO);
 
-  temperatureSensor = new Supla::Sensor::DS18B20(TEMPERATURE_GPIO);
-  temperatureSensor->setInitialCaption("Temperatura deszczówki");
+  if (CzujnikTemperatury == ON){
+    temperatureSensor = new Supla::Sensor::DS18B20(TEMPERATURE_GPIO);
+    temperatureSensor->setInitialCaption("Temperatura deszczówki");
+  }
+  
 
   zbiornik = new AnalogContainer(
                       ANALOG_GPIO, dolnaWartosc, gornaWartosc,  nanValue);
-
-  czujnikMin = new Supla::Sensor::Binary(SENSOR_MIN_GPIO, true, true);
-  czujnikMin->getChannel()->setDefault(SUPLA_CHANNELFNC_CONTAINER_LEVEL_SENSOR);
-  czujnikMin->setInitialCaption("Czujnik poziomu minimalnego");
-  czujnikMax = new Supla::Sensor::Binary(SENSOR_MAX_GPIO, true, true);
-  czujnikMax->getChannel()->setDefault(SUPLA_CHANNELFNC_CONTAINER_LEVEL_SENSOR);
-  czujnikMax->setInitialCaption("Czujnik poziomu maksymalnego");
+  if (Krancowki == ON){
+    czujnikMin = new Supla::Sensor::Binary(SENSOR_MIN_GPIO, true, true);
+    czujnikMin->getChannel()->setDefault(SUPLA_CHANNELFNC_CONTAINER_LEVEL_SENSOR);
+    czujnikMin->setInitialCaption("Czujnik poziomu minimalnego");
+    czujnikMax = new Supla::Sensor::Binary(SENSOR_MAX_GPIO, true, true);
+    czujnikMax->getChannel()->setDefault(SUPLA_CHANNELFNC_CONTAINER_LEVEL_SENSOR);
+    czujnikMax->setInitialCaption("Czujnik poziomu maksymalnego");
+  }
+  
 
   auto cfgButton = new Supla::Control::Button(BUTTON_CFG_GPIO, true, true);
   cfgButton->configureAsConfigButton(&SuplaDevice);

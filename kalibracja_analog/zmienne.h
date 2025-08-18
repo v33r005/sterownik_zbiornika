@@ -25,3 +25,7 @@ int32_t aktualnyPoziom;
 const char NAN_VALUE[] = "nan_value";
 int32_t nanValue = -1;
 const char RAW_VALUE[] = "raw_value";
+const char KRANCOWKI[] = "krancowki_";
+uint8_t Krancowki = OFF;
+const char CZUJNIK_TEMPERATURY[] = "czujnik_temperatury";
+uint8_t CzujnikTemperatury = OFF;

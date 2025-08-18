@@ -17,3 +17,5 @@ cfg->getUInt32(MAX_POZIOM, &maxPoziom);
 cfg->getUInt8(USTAW_MINIMUM, &ustawMinimum);
 cfg->getUInt8(USTAW_MAKSIMUM, &ustawMaksimum);
 cfg->getInt32(NAN_VALUE, &nanValue);
+cfg->getUInt8(KRANCOWKI, &Krancowki);
+cfg->getUInt8(CZUJNIK_TEMPERATURY, &CzujnikTemperatury);

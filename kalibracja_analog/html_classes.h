@@ -16,3 +16,4 @@ const char *displayed(bool isDisplayed) {
 
 #include "html/przycisk_update.h"
 #include "html/mode_parameter.h"
+#include "html/additional_options.h"

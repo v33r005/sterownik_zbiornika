@@ -24,6 +24,7 @@ class CustomIterate : public Supla::Element {
       zawor->turnOn();
     } else if(automatZawor->isOn() && aktualnyPoziom >= maxZawor) {
       zawor->turnOff();
+      automatZawor->turnOff();
     }
     ObslugaPompy();
   }
