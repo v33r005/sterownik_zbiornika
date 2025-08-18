@@ -81,6 +81,5 @@ void loop() {
   if ((millis() - lastTime > 2000) || (lastTime > millis())) {
     lastTime = millis(); 
     aktualnyPoziom = zbiornik->readNewValue();
-    Serial.println(aktualnyPoziom);
   }
 }
