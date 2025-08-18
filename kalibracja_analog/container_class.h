@@ -1,5 +1,6 @@
 #pragma once
 
+#include <algorithm>
 #include <supla/sensor/container.h>
 
 class AnalogContainer : public Supla::Sensor::Container {
@@ -17,17 +18,14 @@ class AnalogContainer : public Supla::Sensor::Container {
     getChannel()->setDefault(SUPLA_CHANNELFNC_WATER_TANK);
   }
 
-  uint16_t getRawValue() {
+  int16_t getRawValue() {
     return analogRead(pin_);
   }
 
   int readNewValue() override {
-    uint16_t raw = getRawValue();
-    if (raw < nanValue_) {
-      value_ = NAN;
-    } else {
-      value_ = map(raw, inMin_, inMax_, 0, 100);
-    }
+    int16_t raw = getRawValue();
+    value_ = (raw < nanValue_) ? NAN
+                       : std::clamp(map(raw, inMin_, inMax_, 0, 100), 0L, 100L);
     return value_;
   }
 
@@ -36,6 +34,6 @@ class AnalogContainer : public Supla::Sensor::Container {
   uint16_t inMin_ = 0;
   uint16_t inMax_ = 4095;
   int16_t nanValue_ = -1;
-  uint8_t value_ = NAN;
+  int8_t value_ = NAN;
   uint64_t lastReadTime_ = 0;
 };

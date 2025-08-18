@@ -28,6 +28,6 @@ class CustomIterate : public Supla::Element {
     }
     ObslugaPompy();
   }
-};  //  CustomIterate
+};  // CustomIterate
 
 CustomIterate cIterate;
