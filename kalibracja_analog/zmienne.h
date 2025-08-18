@@ -29,4 +29,3 @@ inline constexpr char *KRANCOWKI = "krancowki_";
 uint8_t Krancowki = OFF;
 inline constexpr char *CZUJNIK_TEMPERATURY = "czujnik_temperatury";
 uint8_t CzujnikTemperatury = OFF;
-inline constexpr char *RAW_VALUE = "raw_value";
