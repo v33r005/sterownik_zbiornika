@@ -1,6 +1,6 @@
 #pragma once
 
-inline constexpr char *SOFT_VERSION = "15.08.2025 @veeroos";
+inline constexpr char *SOFT_VERSION = "18.08.2025 @veeroos";
 constexpr uint8_t STATUS_LED_GPIO = 2;
 constexpr uint8_t BUTTON_CFG_GPIO = 0;
 constexpr uint8_t ON = 1;
