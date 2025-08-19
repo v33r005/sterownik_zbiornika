@@ -23,8 +23,11 @@ class AnalogContainer : public Supla::Sensor::Container {
   }
 
   int readNewValue() override {
-    value_ = (raw_ < nanValue_) ? NAN
-                      : std::clamp(map(raw_, inMin_, inMax_, 0, 100), 0L, 100L);
+    if (raw_ < nanValue) {
+      value_ = -1;
+    } else {
+      value_ = std::clamp(map(raw_, inMin_, inMax_, 0, 100), 0L, 100L);
+    }
     return value_;
   }
 
@@ -52,4 +55,5 @@ class AnalogContainer : public Supla::Sensor::Container {
   int16_t raw_ = 0;
   int8_t value_ = NAN;
   uint64_t lastReadTime_ = 0;
+  
 };

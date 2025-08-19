@@ -131,6 +131,18 @@ class ModeParameter : public Supla::HtmlElement {
       sender->send(inCfgValue);
       sender->send("\">");
       sender->send("</div>"); 
+
+      sender->send("<div class=\"form-field\">");
+        sender->sendLabelFor(NAN_VALUE, "NaN value");
+        sender->send(
+              "<input type=\"number\" min=\"-1\" step=\"1\" ");
+        sender->sendNameAndId(NAN_VALUE);
+        sender->send(" value=\"");
+        inCfgIntValue = DEFAULT_NAN_VALUE;
+        cfg->getInt32(NAN_VALUE, &inCfgIntValue);
+        sender->send(inCfgIntValue);
+        sender->send("\">");
+        sender->send("</div>");
     }
   }
 
@@ -206,6 +218,12 @@ class ModeParameter : public Supla::HtmlElement {
       }
       return true;
     }
+    if (cfg && strcmp(key, NAN_VALUE) == 0) {
+        int32_t inFormValue = stringToInt(value);
+        cfg->setInt32(NAN_VALUE, inFormValue);
+        nanValue = inFormValue;
+        return true;
+      }
     return false;    
   }
   void onProcessingEnd() {
@@ -222,6 +240,7 @@ class ModeParameter : public Supla::HtmlElement {
  protected:  
   uint32_t inCfgValue;
   int32_t inCfgValue1;
+  int32_t inCfgIntValue = 0;
   bool checkboxFound_ = false;
   bool checkboxFound_1 = false;
 

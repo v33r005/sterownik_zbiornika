@@ -20,24 +20,9 @@ void setup() {
   ledPompa = new Supla::Control::PinStatusLed(PUMP_GPIO, LED_PUMP_GPIO);
   ledZawor = new Supla::Control::PinStatusLed(VALVE_GPIO, LED_VALVE_GPIO);
 
-  if (CzujnikTemperatury == ON){
-    temperatureSensor = new Supla::Sensor::DS18B20(TEMPERATURE_GPIO);
-    temperatureSensor->setInitialCaption("Temperatura deszczówki");
-  }
-  
-
   zbiornik = new AnalogContainer(
-                      ANALOG_GPIO, dolnaWartosc, gornaWartosc,  nanValue);
-  if (Krancowki == ON){
-    czujnikMin = new Supla::Sensor::Binary(SENSOR_MIN_GPIO, true, true);
-    czujnikMin->getChannel()->setDefault(SUPLA_CHANNELFNC_CONTAINER_LEVEL_SENSOR);
-    czujnikMin->setInitialCaption("Czujnik poziomu minimalnego");
-    czujnikMax = new Supla::Sensor::Binary(SENSOR_MAX_GPIO, true, true);
-    czujnikMax->getChannel()->setDefault(SUPLA_CHANNELFNC_CONTAINER_LEVEL_SENSOR);
-    czujnikMax->setInitialCaption("Czujnik poziomu maksymalnego");
-  }
+                      ANALOG_GPIO, dolnaWartosc, gornaWartosc, 500);// nanValue);
   
-
   auto cfgButton = new Supla::Control::Button(BUTTON_CFG_GPIO, true, true);
   cfgButton->configureAsConfigButton(&SuplaDevice);
 
@@ -64,6 +49,20 @@ void setup() {
   zalaczReczniePompe->addAction(Supla::TOGGLE, uruchomPompe, Supla::ON_PRESS);
   zalaczRecznieZawor->addAction(Supla::TOGGLE, zaworReczny, Supla::ON_PRESS);
 
+  if (Krancowki == ON){
+    czujnikMin = new Supla::Sensor::Binary(SENSOR_MIN_GPIO, true, true);
+    czujnikMin->getChannel()->setDefault(SUPLA_CHANNELFNC_CONTAINER_LEVEL_SENSOR);
+    czujnikMin->setInitialCaption("Czujnik poziomu minimalnego");
+    czujnikMax = new Supla::Sensor::Binary(SENSOR_MAX_GPIO, true, true);
+    czujnikMax->getChannel()->setDefault(SUPLA_CHANNELFNC_CONTAINER_LEVEL_SENSOR);
+    czujnikMax->setInitialCaption("Czujnik poziomu maksymalnego");
+  }
+  
+  if (CzujnikTemperatury == ON){
+    temperatureSensor = new Supla::Sensor::DS18B20(TEMPERATURE_GPIO);
+    temperatureSensor->setInitialCaption("Temperatura deszczówki");
+  }
+
   #include "html.h"
 
   httpUpdater.setup(suplaServer.getServerPtr(), "/update");
@@ -80,6 +79,7 @@ void loop() {
   static uint32_t lastTime = 0;
   if ((millis() - lastTime > 2000) || (lastTime > millis())) {
     lastTime = millis(); 
-    aktualnyPoziom = zbiornik->readNewValue();
+    aktualnyPoziom = zbiornik->getChannel()->getContainerFillValue();
+    Serial.println(aktualnyPoziom);
   }
 }
