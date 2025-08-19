@@ -23,7 +23,7 @@ bool dolej = false;
 bool odczyt = false;
 int32_t aktualnyPoziom;
 inline constexpr char *NAN_VALUE = "nan_value";
-int32_t nanValue = -1;
+int32_t nanValue = 0;
 inline constexpr char *RAW_VALUE = "raw_value";
 inline constexpr char *KRANCOWKI = "krancowki_";
 uint8_t Krancowki = OFF;
