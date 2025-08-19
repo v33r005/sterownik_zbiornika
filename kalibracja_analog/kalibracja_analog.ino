@@ -21,7 +21,7 @@ void setup() {
   ledZawor = new Supla::Control::PinStatusLed(VALVE_GPIO, LED_VALVE_GPIO);
 
   zbiornik = new AnalogContainer(
-                      ANALOG_GPIO, dolnaWartosc, gornaWartosc, 500);// nanValue);
+                      ANALOG_GPIO, dolnaWartosc, gornaWartosc, nanValue);
   
   auto cfgButton = new Supla::Control::Button(BUTTON_CFG_GPIO, true, true);
   cfgButton->configureAsConfigButton(&SuplaDevice);
