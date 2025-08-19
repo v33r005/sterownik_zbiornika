@@ -81,8 +81,9 @@ class AdditionalOptions : public Supla::HtmlElement {
     if (!checkboxFound_) {
       handleResponse(KRANCOWKI, "off");
     }
-    checkboxFound_1 = false;
-    if (!checkboxFound_) {
+    checkboxFound_ = false;
+    
+    if (!checkboxFound_1) {
       handleResponse(CZUJNIK_TEMPERATURY, "off");
     }
     checkboxFound_1 = false;
