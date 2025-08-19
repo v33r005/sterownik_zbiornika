@@ -1,11 +1,11 @@
 #pragma once
 
 void ObslugaPompy() {
-  if (uruchomPompe->isOn() && ((aktualnyPoziom > minPompa)||(Krancowki == ON && czujnikMin->getValue() == true))) {
+  if (uruchomPompe->isOn() && aktualnyPoziom > minPompa) {
     pompa->turnOn();
   } else if (!uruchomPompe->isOn() && pompa->isOn()) {
     pompa->turnOff();
-  } else if (uruchomPompe->isOn() && ((aktualnyPoziom < minPompa)||(Krancowki == ON && czujnikMin->getValue() == false))) {
+  } else if (uruchomPompe->isOn() && aktualnyPoziom < minPompa) {
     pompa->turnOff();
     uruchomPompe->turnOff();
   }

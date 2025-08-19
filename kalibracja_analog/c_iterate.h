@@ -6,12 +6,12 @@ class CustomIterate : public Supla::Element {
 
   void iterateAlways() {
     Kalibracja();
-    if (zaworReczny->isOn() && ((aktualnyPoziom < maxPoziom) || (Krancowki == ON && czujnikMax->getValue() == false))) {
+    if (zaworReczny->isOn() && aktualnyPoziom < maxPoziom) {
       if (automatZawor->isOn()) {
         automatZawor->turnOff();
       }
       zawor->turnOn();
-    } else if (zaworReczny->isOn() && ((aktualnyPoziom >= maxPoziom) || (Krancowki == ON && czujnikMax->getValue() == true))) {
+    } else if (zaworReczny->isOn() && aktualnyPoziom >= maxPoziom) {
       zawor->turnOff();
       zaworReczny->turnOff();
     }
@@ -22,9 +22,8 @@ class CustomIterate : public Supla::Element {
     }
     if (automatZawor->isOn() && aktualnyPoziom <= minZawor) {
       zawor->turnOn();
-    } else if(automatZawor->isOn() && ((aktualnyPoziom >= maxZawor) || (Krancowki == ON && czujnikMax->getValue() == true))) {
+    } else if(automatZawor->isOn() && aktualnyPoziom >= maxZawor) {
       zawor->turnOff();
-      automatZawor->turnOff();
     }
     ObslugaPompy();
   }
