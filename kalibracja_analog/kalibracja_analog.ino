@@ -46,8 +46,9 @@ void setup() {
   zaworReczny->setInitialCaption("Załącz zawór ręcznie");
   zaworReczny->getChannel()->setDefault(SUPLA_CHANNELFNC_POWERSWITCH);
 
-  zalaczReczniePompe->addAction(Supla::TOGGLE, uruchomPompe, Supla::ON_PRESS);
-  zalaczRecznieZawor->addAction(Supla::TOGGLE, zaworReczny, Supla::ON_PRESS);
+  zalaczReczniePompe->addAction(Supla::TOGGLE, uruchomPompe, Supla::ON_HOLD);
+  zalaczRecznieZawor->addAction(Supla::TOGGLE, zaworReczny, Supla::ON_HOLD);
+  zalaczRecznieZawor->addAction(Supla::TOGGLE, automatZawor, Supla::ON_CLICK_2);
 
   if (Krancowki == ON){
     czujnikMin = new Supla::Sensor::Binary(SENSOR_MIN_GPIO, true, true);
