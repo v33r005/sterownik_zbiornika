@@ -29,3 +29,5 @@ inline constexpr char *KRANCOWKI = "krancowki_";
 uint8_t Krancowki = OFF;
 inline constexpr char *CZUJNIK_TEMPERATURY = "czujnik_temperatury";
 uint8_t CzujnikTemperatury = OFF;
+bool zmienna_bool_1 = false;
+bool zmienna_bool_2 = false;

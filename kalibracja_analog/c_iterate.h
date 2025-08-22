@@ -6,10 +6,24 @@ class CustomIterate : public Supla::Element {
 
   void iterateAlways() {
     Kalibracja();
+
+    if (zaworReczny->isOn() && zmienna_bool_1 == false){
+      zmienna_bool_1 = true;
+      if (automatZawor->isOn()) automatZawor->turnOff();
+    }
+    if (!zaworReczny->isOn() && zmienna_bool_1 == true){
+      zmienna_bool_1 = false;
+    }
+    
+    if (automatZawor->isOn() && zmienna_bool_2 == false){
+      zmienna_bool_2 = true;
+      if (zaworReczny->isOn()) zaworReczny->turnOff();
+    }
+    if (!automatZawor->isOn() && zmienna_bool_2 == true){
+      zmienna_bool_2 = false;
+    } 
+    
     if (zaworReczny->isOn() && aktualnyPoziom < maxPoziom) {
-      if (automatZawor->isOn()) {
-        automatZawor->turnOff();
-      }
       zawor->turnOn();
     } else if (zaworReczny->isOn() && aktualnyPoziom >= maxPoziom) {
       zawor->turnOff();
