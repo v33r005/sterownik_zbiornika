@@ -1,4 +1,7 @@
-//built-in LED requires board version 3.3.0
+/*
+built-in LED requires board version 3.3.0
+SuplaDevice minimum 25.8.1
+*/
 
 #include "definicje.h"
 #include "biblioteki.h"
