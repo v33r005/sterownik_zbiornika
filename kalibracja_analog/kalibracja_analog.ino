@@ -1,7 +1,5 @@
-/*
-to do:
-wejscie analogowe pomiaru cisnienia
-*/
+//built-in LED requires board version 3.3.0
+
 #include "definicje.h"
 #include "biblioteki.h"
 #include "zmienne.h"
@@ -65,7 +63,7 @@ void setup() {
   }
 
   #include "html.h"
-
+  dioda_statusu.begin();
   httpUpdater.setup(suplaServer.getServerPtr(), "/update");
   SuplaDevice.setName(devName);
   SuplaDevice.setSwVersion(SOFT_VERSION);
@@ -81,5 +79,12 @@ void loop() {
   if ((millis() - lastTime > 2000) || (lastTime > millis())) {
     lastTime = millis(); 
     aktualnyPoziom = zbiornik->getChannel()->getContainerFillValue();
+  }
+  if (digitalRead(STATUS_LED_GPIO) == true){
+    dioda_statusu.setPixelColor(0, dioda_statusu.Color(0, 0, 0));
+    dioda_statusu.show();
+  }else{
+    dioda_statusu.setPixelColor(0, dioda_statusu.Color(0, 50, 0));
+    dioda_statusu.show();
   }
 }

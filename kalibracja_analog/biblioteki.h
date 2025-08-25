@@ -1,5 +1,7 @@
 #pragma once
 
+#include <Adafruit_NeoPixel.h>
+Adafruit_NeoPixel dioda_statusu(1, CONFIG_LED_BUILT_IN_GPIO, NEO_GRBW + NEO_KHZ800);
 #include <HardwareSerial.h>
 #include <SuplaDevice.h>
 #include <supla/control/action_trigger.h>
