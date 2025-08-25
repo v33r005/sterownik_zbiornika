@@ -68,6 +68,8 @@ void setup() {
   #include "html.h"
   dioda_statusu.begin();
   httpUpdater.setup(suplaServer.getServerPtr(), "/update");
+  SuplaDevice.allowWorkInOfflineMode(0); 
+  SuplaDevice.setLeaveCfgModeAfterInactivityMin(5);
   SuplaDevice.setName(devName);
   SuplaDevice.setSwVersion(SOFT_VERSION);
   SuplaDevice.setSuplaCACert(suplaCACert);
