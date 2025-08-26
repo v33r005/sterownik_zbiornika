@@ -3,9 +3,11 @@
 void ObslugaPompy() {
   if (uruchomPompe->isOn() && aktualnyPoziom > minPompa) {
     pompa->turnOn();
-  } else if (!uruchomPompe->isOn() && pompa->isOn()) {
+  } 
+  if (!uruchomPompe->isOn() && pompa->isOn()) {
     pompa->turnOff();
-  } else if ((uruchomPompe->isOn() && aktualnyPoziom <= minPompa) || zbiornik->isInvalidSensorStateActive()) {
+  } 
+  if ((uruchomPompe->isOn() && aktualnyPoziom <= minPompa) || zbiornik->isInvalidSensorStateActive()) {
     pompa->turnOff();
     uruchomPompe->turnOff();
   }

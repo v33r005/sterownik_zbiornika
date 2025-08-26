@@ -40,6 +40,13 @@ class CustomIterate : public Supla::Element {
       zawor->turnOff();
     }
     ObslugaPompy();
+    if (digitalRead(STATUS_LED_GPIO) == true){
+    dioda_statusu.setPixelColor(0, dioda_statusu.Color(0, 0, 0));
+    dioda_statusu.show();
+  }else{
+    dioda_statusu.setPixelColor(0, dioda_statusu.Color(0, 50, 0));
+    dioda_statusu.show();
+  }
   }
 };  // CustomIterate
 

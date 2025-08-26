@@ -15,7 +15,7 @@ void setup() {
   Serial.begin(115200);
 
   #include "storage_init.h"
-
+  
   pompa = new Supla::Control::InternalPinOutput(PUMP_GPIO);
   zawor = new Supla::Control::InternalPinOutput(VALVE_GPIO);
   ledPompa = new Supla::Control::PinStatusLed(PUMP_GPIO, LED_PUMP_GPIO);
@@ -85,11 +85,5 @@ void loop() {
     lastTime = millis(); 
     aktualnyPoziom = zbiornik->getChannel()->getContainerFillValue();
   }
-  if (digitalRead(STATUS_LED_GPIO) == true){
-    dioda_statusu.setPixelColor(0, dioda_statusu.Color(0, 0, 0));
-    dioda_statusu.show();
-  }else{
-    dioda_statusu.setPixelColor(0, dioda_statusu.Color(0, 50, 0));
-    dioda_statusu.show();
-  }
+  
 }

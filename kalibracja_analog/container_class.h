@@ -26,7 +26,7 @@ class AnalogContainer : public Supla::Sensor::Container {
     if (raw_ < nanValue) {
       value_ = -1;
     } else {
-      value_ = std::clamp(map(raw_, inMin_, inMax_, 0, 100), 0L, 100L);
+      value_ = map(raw_, inMin_, inMax_, 0, 100);
     }
     return value_;
   }
