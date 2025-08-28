@@ -10,6 +10,7 @@ class CustomIterate : public Supla::Element {
     ObslugaPompy();
     Obsluga_Zaworu();
     Obsluga_Status_LED_RGB();
+    Obsluga_Bledow();
   }
 };  // CustomIterate
 

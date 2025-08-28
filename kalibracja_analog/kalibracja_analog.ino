@@ -64,6 +64,11 @@ void setup() {
     temperatureSensor = new Supla::Sensor::DS18B20(TEMPERATURE_GPIO);
     temperatureSensor->setInitialCaption("Temperatura deszczówki");
   }
+  
+  Powiadomienia = new Supla::Control::VirtualRelay();
+  Powiadomienia->setInitialCaption("Załącz powiadomienia Push");
+  Powiadomienia->getChannel()->setDefault(SUPLA_CHANNELFNC_POWERSWITCH);
+  Powiadomienia->setDefaultStateRestore();
 
   #include "html.h"
   dioda_statusu.begin();

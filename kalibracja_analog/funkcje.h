@@ -76,3 +76,27 @@ void Obsluga_Suwakow(){
     zmienna_bool_2 = false;
   }
 }
+
+void Obsluga_Bledow(){
+  static uint32_t czasPowiadomienia1 = 0;
+  if (Supla::Network::IsReady()) {
+    if (Powiadomienia->isOn()){
+      if (zbiornik->isInvalidSensorStateActive() && !wiadomosc1){
+        if (!zabezpieczenie1){
+          czas1 = millis() + 3000;
+          zabezpieczenie1 = true;
+        }
+        if (zabezpieczenie1 && millis() > czas1){
+          Supla::Notification::Send(-1, "Czujnik Poziomu", "Nieprawidłowy stan czujników");
+          wiadomosc1 = true;
+          czasPowiadomienia1 = millis();
+        }
+      }else{
+        zabezpieczenie1 = false;
+      }
+      if (millis() - czasPowiadomienia1 > 120000  || millis() < czasPowiadomienia1){
+        wiadomosc1 = false;
+      }
+    }
+  }
+}

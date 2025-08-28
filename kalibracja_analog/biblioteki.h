@@ -20,6 +20,7 @@ Supla::Control::Button *zalaczRecznieZawor = nullptr;
 Supla::Control::VirtualRelay *uruchomPompe = nullptr;
 Supla::Control::VirtualRelay *automatZawor = nullptr;
 Supla::Control::VirtualRelay *zaworReczny = nullptr;
+Supla::Control::VirtualRelay *Powiadomienia = nullptr;
 #include <supla/control/internal_pin_output.h>
 Supla::Control::InternalPinOutput *pompa = nullptr;
 Supla::Control::InternalPinOutput *zawor = nullptr;
@@ -38,6 +39,7 @@ Supla::Sensor::Binary *czujnikMax = nullptr;
 Supla::Sensor::Binary *czujnikMin = nullptr;
 #include <supla/sensor/DS18B20.h>
 Supla::Sensor::DS18B20 *temperatureSensor = nullptr;
+#include <supla/device/notifications.h>
 
 class AnalogContainer;
 AnalogContainer *zbiornik = nullptr;

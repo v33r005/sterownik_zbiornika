@@ -31,3 +31,6 @@ inline constexpr char *CZUJNIK_TEMPERATURY = "czujnik_temperatury";
 uint8_t CzujnikTemperatury = OFF;
 bool zmienna_bool_1 = false;
 bool zmienna_bool_2 = false;
+bool wiadomosc1;
+bool zabezpieczenie1;
+unsigned long czas1;
