@@ -70,6 +70,8 @@ void setup() {
   Powiadomienia->getChannel()->setDefault(SUPLA_CHANNELFNC_POWERSWITCH);
   Powiadomienia->setDefaultStateRestore();
 
+  Supla::Notification::RegisterNotification(-1);
+
   #include "html.h"
   dioda_statusu.begin();
   httpUpdater.setup(suplaServer.getServerPtr(), "/update");
